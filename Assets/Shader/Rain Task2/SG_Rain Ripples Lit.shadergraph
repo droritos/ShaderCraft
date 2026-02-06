@@ -1124,7 +1124,7 @@
     "m_ObjectId": "08f546f649d74cceb8da06e1600e34d7",
     "m_Title": "Ripple Layer",
     "m_Position": {
-        "x": -5575.00048828125,
+        "x": -5574.99951171875,
         "y": -110.0
     }
 }
@@ -3590,13 +3590,13 @@
     "m_RefNameGeneratedByDisplayName": "RainIntensity",
     "m_DefaultReferenceName": "_RainIntensity",
     "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
+    "m_GeneratePropertyBlock": false,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
     "m_DismissedVersion": 0,
     "m_Precision": 0,
     "overrideHLSLDeclaration": true,
-    "hlslDeclarationOverride": 2,
+    "hlslDeclarationOverride": 1,
     "m_Hidden": false,
     "m_PerRendererData": false,
     "m_customAttributes": [],
@@ -3804,8 +3804,8 @@
     "m_ObjectId": "6d1c9835ce0145f79b0907ca786cd5d8",
     "m_Title": "Surface",
     "m_Position": {
-        "x": -1433.000244140625,
-        "y": 27.000041961669923
+        "x": -1432.99951171875,
+        "y": 27.000038146972658
     }
 }
 
@@ -3815,8 +3815,8 @@
     "m_ObjectId": "6ed568e3116c4b9593f2ae67058089df",
     "m_Title": "Ripple Layer",
     "m_Position": {
-        "x": -6105.00048828125,
-        "y": 1072.0001220703125
+        "x": -6104.99951171875,
+        "y": 1072.0
     }
 }
 
@@ -5094,7 +5094,7 @@
     "m_ObjectId": "a077b58cdc2143e2b33f5138898292f6",
     "m_Title": "UpMask",
     "m_Position": {
-        "x": -4564.00048828125,
+        "x": -4564.0,
         "y": 1151.0001220703125
     }
 }
@@ -6163,7 +6163,7 @@
     "m_ObjectId": "de212b74158c4caf89a68aab0dce12de",
     "m_Title": "Voroni",
     "m_Position": {
-        "x": -4330.00048828125,
+        "x": -4329.99951171875,
         "y": 665.0000610351563
     }
 }

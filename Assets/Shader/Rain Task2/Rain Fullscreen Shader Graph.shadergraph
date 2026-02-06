@@ -2477,8 +2477,8 @@
     "m_ObjectId": "6bf8fcc52743456f95783e5b98d14da4",
     "m_Title": "Waves",
     "m_Position": {
-        "x": -2385.0,
-        "y": 1568.0
+        "x": -2384.999755859375,
+        "y": 1567.9998779296875
     }
 }
 
@@ -2686,13 +2686,13 @@
     "m_RefNameGeneratedByDisplayName": "RainIntensity",
     "m_DefaultReferenceName": "_RainIntensity",
     "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
+    "m_GeneratePropertyBlock": false,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
     "m_DismissedVersion": 0,
     "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
+    "overrideHLSLDeclaration": true,
+    "hlslDeclarationOverride": 1,
     "m_Hidden": false,
     "m_PerRendererData": false,
     "m_customAttributes": [],
@@ -3135,7 +3135,7 @@
     "m_ObjectId": "a9a4519078ae44828e1d36d30504a019",
     "m_Title": "Normalize",
     "m_Position": {
-        "x": -2963.0,
+        "x": -2962.999755859375,
         "y": 752.0
     }
 }
@@ -3312,8 +3312,8 @@
     "m_ObjectId": "b3443935bb614bdd8c03df0c14ba53b9",
     "m_Title": "Clamp Sine",
     "m_Position": {
-        "x": -847.0,
-        "y": 1563.0
+        "x": -846.9998779296875,
+        "y": 1562.9998779296875
     }
 }
 
@@ -3609,8 +3609,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1367.0001220703125,
-            "y": 1628.0,
+            "x": -1382.9998779296875,
+            "y": 1627.9998779296875,
             "width": 208.0,
             "height": 302.0
         }
@@ -3857,8 +3857,8 @@
     "m_ObjectId": "d36df69985d54d5584296cc0d28ead1d",
     "m_Title": "Final UV",
     "m_Position": {
-        "x": -202.0,
-        "y": 1201.0
+        "x": -201.9998779296875,
+        "y": 1200.9998779296875
     }
 }
 
