@@ -1,0 +1,32 @@
+#pragma kernel CSMain
+
+// Match in C# and our Geometry Shader!
+struct TriangleData
+{
+    float3 positionOffset;
+    float3 velocity;
+    float lifetime;
+};
+
+// RW stands for Read/Write. This holds the array of all our triangles.
+RWStructuredBuffer<TriangleData> _TriangleBuffer;
+
+// 3. Variables passed from C# each frame
+float _DeltaTime;
+float _Gravity; 
+
+// 4. The actual program that runs on the GPU
+[numthreads(64, 1, 1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    TriangleData trianglesData = _TriangleBuffer[id.x];
+
+    trianglesData.lifetime -= _DeltaTime;
+
+    if (trianglesData.lifetime > 0.00)
+    {
+        trianglesData.positionOffset += trianglesData.velocity * _DeltaTime;
+        trianglesData.velocity.y -= _Gravity * _DeltaTime; // Apply Gravity over Time
+    }
+    _TriangleBuffer[id.x] = trianglesData;
+}
