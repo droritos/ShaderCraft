@@ -118,9 +118,9 @@ public class ExplosionController : MonoBehaviour
             {
                 resetData[i].PositionOffset = Vector3.zero;
                 resetData[i].Velocity = new Vector3(
-                    UnityEngine.Random.Range(-1.5f, 1.5f), // Outward spread
-                    UnityEngine.Random.Range(2f, 4f),      // Upward lift
-                    UnityEngine.Random.Range(-1.5f, 1.5f)
+                    UnityEngine.Random.Range(-minXZ, maxXZ), // Outward spread
+                    UnityEngine.Random.Range(minY, maxY),      // Upward lift
+                    UnityEngine.Random.Range(-minXZ, maxXZ)
                 );
                 resetData[i].Lifetime = lifetime;
             }

@@ -391,6 +391,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 33608218242170296, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
+      propertyPath: maxY
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 33608218242170296, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
+      propertyPath: minY
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 33608218242170296, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
+      propertyPath: maxXZ
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 33608218242170296, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
+      propertyPath: minXZ
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 33608218242170296, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
+      propertyPath: gravityStrength
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 33608218242170296, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
+      propertyPath: explosionTimeScale
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 67026958242294331, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
       propertyPath: m_Name
       value: Ugly Monkey Head
