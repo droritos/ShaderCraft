@@ -119,6 +119,33 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &448405207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7054510872490512074, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
+  m_PrefabInstance: {fileID: 6118056420933699780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &448405211
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448405207}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2222346464153789849, guid: 57b6517a55eebb045a002ba0b8f7f226, type: 3}
 --- !u!1 &471345631
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +410,34 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!1001 &3619895133618827404
+--- !u!1 &1659139426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8047129923760840112, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
+  m_PrefabInstance: {fileID: 6118056420933699780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1659139430
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659139426}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6825837178809999567, guid: 57b6517a55eebb045a002ba0b8f7f226, type: 3}
+--- !u!1001 &6118056420933699780
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -391,59 +445,85 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 67026958242294331, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
-      propertyPath: m_Name
-      value: Ugly Monkey Head
-      objectReference: {fileID: 0}
-    - target: {fileID: 368851228503702403, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
+    - target: {fileID: 3914312939784670151, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 368851228503702403, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
+    - target: {fileID: 3914312939784670151, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 368851228503702403, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
+    - target: {fileID: 3914312939784670151, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 368851228503702403, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
+    - target: {fileID: 3914312939784670151, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 368851228503702403, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
+    - target: {fileID: 3914312939784670151, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 368851228503702403, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
+    - target: {fileID: 3914312939784670151, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 368851228503702403, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
+    - target: {fileID: 3914312939784670151, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 368851228503702403, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
+    - target: {fileID: 3914312939784670151, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 368851228503702403, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
+    - target: {fileID: 3914312939784670151, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 368851228503702403, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
+    - target: {fileID: 3914312939784670151, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4973300256797331068, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
+      propertyPath: m_Name
+      value: 'Shaved : Ugly Monkey Head'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575633553075372698, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
+      propertyPath: maxY
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575633553075372698, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
+      propertyPath: minY
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575633553075372698, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
+      propertyPath: maxXZ
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575633553075372698, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
+      propertyPath: minXZ
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575633553075372698, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
+      propertyPath: myComputeShader
+      value: 
+      objectReference: {fileID: 7200000, guid: 2f7d4c7e72eab2045936d76be54b6d4c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4c28732860c94aa43aa99a17873087ef, type: 3}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7054510872490512074, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 448405211}
+    - targetCorrespondingSourceObject: {fileID: 8047129923760840112, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1659139430}
+  m_SourcePrefab: {fileID: 100100000, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 471345634}
   - {fileID: 1176316502}
-  - {fileID: 3619895133618827404}
+  - {fileID: 6118056420933699780}
