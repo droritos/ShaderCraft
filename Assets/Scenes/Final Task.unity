@@ -1585,6 +1585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea2adc68a64930469cce4977d614206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ModelController
+  <GroomableObject>k__BackingField: {fileID: 1474204896}
   modelSlotTransfrom: {fileID: 24684207}
   rotationSpeed: 150
 --- !u!1 &1176316500
@@ -1925,6 +1926,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3914312939784670151, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
   m_PrefabInstance: {fileID: 6118056420933699780}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1474204896 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1061362420741004377, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
+  m_PrefabInstance: {fileID: 6118056420933699780}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf6a501d8857db49afd353b95ca15fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GroomableObject
 --- !u!1001 &1500082147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2482,9 +2494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grooming.GroomingGPUManager
   myComputeShader: {fileID: 7200000, guid: 2f7d4c7e72eab2045936d76be54b6d4c, type: 3}
-  targetMeshFilter:
-  - {fileID: 0}
-  - {fileID: 0}
+  myModelController: {fileID: 842481057}
   gravityStrength: 5
   explosionTimeScale: 0.5
 --- !u!1001 &1864587771

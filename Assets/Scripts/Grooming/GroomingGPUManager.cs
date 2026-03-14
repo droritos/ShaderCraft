@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Global_Data;
+using Statue;
 using UnityEngine;
 // Make sure your MeshPart and TriangleData are still accessible
 
@@ -9,14 +10,15 @@ namespace Grooming
     {
         [Header("References")]
         [SerializeField] ComputeShader myComputeShader;
-        [SerializeField] List<MeshFilter> targetMeshFilter;
+        [SerializeField] ModelController  myModelController;
+        private List<MeshFilter> TargetMeshFilter => myModelController.GroomableObject.GetMeshFilters();
     
         [Header("Passed Settings")]
         [SerializeField] float gravityStrength = 5.0f;
         [SerializeField, Range(0.1f, 1.0f)] float explosionTimeScale = 0.5f;
 
         // We make this public so our tools can access the buffers later!
-        public List<MeshPart> meshParts { get; private set; } = new List<MeshPart>();
+        public List<MeshPart> MeshParts { get; private set; } = new List<MeshPart>();
 
         void Start()
         {
@@ -25,12 +27,12 @@ namespace Grooming
 
         void Update()
         {
-            myComputeShader.SetFloat("_Gravity", gravityStrength);
-            myComputeShader.SetFloat("_DeltaTime", Time.deltaTime * explosionTimeScale);
+            myComputeShader.SetFloat(GlobalData.ShaderProperties.Gravity, gravityStrength);
+            myComputeShader.SetFloat(GlobalData.ShaderProperties.DeltaTime, Time.deltaTime * explosionTimeScale);
         
-            foreach (MeshPart part in meshParts)
+            foreach (MeshPart part in MeshParts)
             {
-                myComputeShader.SetBuffer(0, "_TriangleBuffer", part.buffer);
+                myComputeShader.SetBuffer(0, GlobalData.ShaderProperties.TriangleBuffer, part.buffer);
                 int batches = Mathf.CeilToInt(part.triangleCount / 64f);
                 myComputeShader.Dispatch(0, batches, 1, 1);
             }
@@ -38,7 +40,7 @@ namespace Grooming
 
         private void InitializeBuffers()
         {
-            foreach (MeshFilter meshFilter in targetMeshFilter)
+            foreach (MeshFilter meshFilter in TargetMeshFilter)
             {
                 Mesh mesh = meshFilter.sharedMesh;
                 Vector3[] normals = mesh.normals;
@@ -66,8 +68,8 @@ namespace Grooming
                 part.triangleCount = count;
                 part.material = meshFilter.GetComponent<MeshRenderer>().material;
             
-                part.material.SetBuffer("_TriangleBuffer", buffer);
-                meshParts.Add(part);
+                part.material.SetBuffer(GlobalData.ShaderProperties.TriangleBuffer, buffer);
+                MeshParts.Add(part);
             
                 SetShaderIntoLitAsset(meshFilter, buffer);
             }
@@ -75,7 +77,7 @@ namespace Grooming
 
         private void OnDestroy()
         {
-            foreach (MeshPart part in meshParts)
+            foreach (MeshPart part in MeshParts)
             {
                 if (part.buffer != null) part.buffer.Release();
             }
@@ -87,8 +89,8 @@ namespace Grooming
             Material[] mats = renderer.materials; 
             foreach (Material m in mats)
             {
-                m.shader = Shader.Find("Custom/ShaveShader");
-                m.SetBuffer("_TriangleBuffer", buffer);
+                m.shader = Shader.Find(GlobalData.ShaderProperties.ShaveShaderName);
+                m.SetBuffer(GlobalData.ShaderProperties.TriangleBuffer, buffer);
             }
         }
     }
