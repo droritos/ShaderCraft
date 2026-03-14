@@ -20,6 +20,7 @@ Shader "Custom/ShaveShader"
             #pragma geometry geom
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
             struct Attributes
             {
@@ -39,8 +40,8 @@ Shader "Custom/ShaveShader"
             {
                 float4 positionHCS : SV_POSITION;
                 float2 uv : TEXCOORD0;
-                // We use nointerpolation because the ID shouldn't blend between vertices
-                nointerpolation uint primitiveID : TEXCOORD1; 
+                nointerpolation uint primitiveID : TEXCOORD1;
+                float3 normalWS : NORMAL; // <--- ADD THIS LINE!
             };
                         
             TEXTURE2D(_BaseMap);
@@ -67,7 +68,7 @@ Shader "Custom/ShaveShader"
                 v2g OUT;
                 OUT.positionOS = IN.positionOS; 
                 OUT.normalOS = IN.normalOS;     
-                OUT.uv = IN.uv;                 
+                OUT.uv = IN.uv;
                 return OUT;
             }
                         
@@ -89,6 +90,8 @@ Shader "Custom/ShaveShader"
                         OUT.positionHCS = TransformWorldToHClip(worldPos);
                         OUT.uv = edges[i].uv;
                         OUT.primitiveID = primitiveID; // Pass the ID here
+                        OUT.normalWS = TransformObjectToWorldNormal(edges[i].normalOS);
+                        
                         triStream.Append(OUT);
                     }
                 }
@@ -100,6 +103,8 @@ Shader "Custom/ShaveShader"
                         OUT.positionHCS = TransformObjectToHClip(edges[i].positionOS.xyz);
                         OUT.uv = edges[i].uv;
                         OUT.primitiveID = primitiveID; // Pass the ID here
+                        OUT.normalWS = TransformObjectToWorldNormal(edges[i].normalOS);
+                        
                         triStream.Append(OUT);
                     }
                 }
@@ -107,13 +112,25 @@ Shader "Custom/ShaveShader"
                                     
             half4 frag(Varyings IN) : SV_Target 
             {
-                // Use IN.primitiveID (the one we passed from the geom shader)
+                // 1. Get our base colors
                 float3 triangleColor = _TriangleBuffer[IN.primitiveID].Color;
-                
                 half4 texColor = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv);
+                half4 finalColor = texColor * _BaseColor * float4(triangleColor, 1.0);
+            
+                Light mainLight = GetMainLight(); // Getting main light
                 
-                // We multiply by triangleColor to see the 'Paint' or 'Shave' effect
-                return texColor * _BaseColor * float4(triangleColor, 1.0);
+                // 3. Compare the polygon's direction to the sun's direction
+                // 'dot' returns 1 if they face each other, 0 if it's hit from the side, and -1 if it's in the shade
+                float NdotL = saturate(dot(normalize(IN.normalWS), mainLight.direction));
+                
+                // 4. Create an 'Ambient' light so the shadows aren't pitch black
+                float ambientLight = 0.3; 
+                
+                // 5. Combine the sun and ambient light
+                float lightIntensity = NdotL + ambientLight;
+            
+                // 6. Multiply our color by the light!
+                return finalColor * lightIntensity;
             }
             
             ENDHLSL

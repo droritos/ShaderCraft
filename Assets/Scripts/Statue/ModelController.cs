@@ -26,11 +26,7 @@ public class ModelController : MonoBehaviour
     void Update()
     {
         // 1. Get Input
-        float input = Input.GetAxis("Horizontal");
-        if (Input.GetMouseButton(1)) 
-        {
-            input += Input.GetAxis("Mouse X");
-        }
+        float input = Input.GetAxis("Horizontal"); // Only Keyboard 'A' , 'D'
 
         // 2. Ask the Handler to do the math
         float rotationAmount = _rotationHandler.CalculateRotation(input, Time.deltaTime);

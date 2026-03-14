@@ -1,10 +1,11 @@
 using System;
+using Global_Data;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Manager
 {
-    public class ToolManager : MonoBehaviour
+    public class ToolBoxManager : MonoSingleton<ToolBoxManager>
     {
         // These match the requirements in your brief
         public event UnityAction<ToolType> OnToolSelected;
@@ -54,14 +55,3 @@ namespace Manager
     }
 }
 
-public enum ToolType { Shave, Grow, Color }
-
-public enum ColorType
-{
-    Red,
-    Blue,
-    Green,
-    Yellow,
-    Purple,
-    Pink
-}

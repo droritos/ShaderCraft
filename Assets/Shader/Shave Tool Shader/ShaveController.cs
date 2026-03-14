@@ -1,8 +1,9 @@
-    using System;
     using System.Collections.Generic;
-    using PublicObjects;
+    using Global_Data;
+    using Manager;
+    //using UnityEditor.EditorTools;
     using UnityEngine;
-
+/*
     public class ShaveController : MonoBehaviour
     {
       
@@ -12,16 +13,13 @@
         
         [Header("Passed Settings")]
         [SerializeField] float gravityStrength = 5.0f;
-        //
+        
         [Header("Triangle Settings")]
-        [SerializeField] float lifetime = 6f;
         [SerializeField, Range(0.1f, 1.0f)] float explosionTimeScale = 0.5f;
+        
+        [Header("Color Settings")]
+        private Color _activeColor = Color.white;
 
-        [Header("Random Settings")] 
-        [SerializeField] private float minXZ;
-        [SerializeField] private float maxXZ;
-        [SerializeField] private float minY;
-        [SerializeField] private float maxY;
 
         #region Private Members
         private List<MeshPart> _meshParts = new List<MeshPart>();
@@ -30,6 +28,13 @@
         #endregion
 
         #region << Unity Functions >>
+
+        private void Awake()
+        {
+            ToolBoxManager.Instance.OnColorSelected -= SetColor; // Unsub at first 
+            ToolBoxManager.Instance.OnColorSelected += SetColor; // Than Resub
+        }
+
         void Start()
         {
             foreach (MeshFilter meshFilter in targetMeshFilter)
@@ -111,6 +116,35 @@
                     }
                 }
             }
+            
+            // LEFT CLICK = SHAVE
+            if (Input.GetMouseButton(0)) 
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out RaycastHit hit))
+                {
+                    MeshPart hitPart = GetHitPart(hit);
+                    if (hitPart != null) 
+                    {
+                        CutTriangle(hitPart, hit.triangleIndex); 
+                    }
+                }
+            }
+
+// RIGHT CLICK = PAINT
+            if (Input.GetMouseButton(1)) 
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out RaycastHit hit))
+                {
+                    MeshPart hitPart = GetHitPart(hit);
+                    if (hitPart != null) 
+                    {
+                        // Uses that activePaintColor we added earlier!
+                        PaintTriangle(hitPart, hit.triangleIndex, _activeColor); 
+                    }
+                }
+            }
         }
 
        
@@ -166,7 +200,12 @@
                                                     || p.material.name.Contains(hit.collider.GetComponent<MeshRenderer>().material.name.Replace(" (Instance)", "")));
             return hitPart;
         }
-        void CutTriangle(MeshPart part, int index)
+
+        private void SetColor(Color color)
+        {
+            _activeColor = color;
+        }
+        private void CutTriangle(MeshPart part, int index)
         {
             TriangleData[] data = new TriangleData[1];
         
@@ -176,6 +215,43 @@
             if (data[0].Lifetime >= 3.0f)
             {
                 data[0].Lifetime = 2.99f; 
+                part.buffer.SetData(data, 0, index, 1);
+            }
+        }
+        private void PaintTriangle(MeshPart part, int index, Color newColor)
+        {
+            TriangleData[] data = new TriangleData[1];
+    
+            // 1. Fetch the specific triangle's data from the GPU
+            part.buffer.GetData(data, 0, index, 1);
+
+            // 2. Only update the color! Leave the lifetime alone so it doesn't fall.
+            data[0].Color = new Vector3(newColor.r, newColor.g, newColor.b);
+    
+            // 3. Send the updated color back to the GPU
+            part.buffer.SetData(data, 0, index, 1);
+        }
+        public void GrowTriangle(MeshPart part, int index)
+        {
+            TriangleData[] data = new TriangleData[1];
+    
+            // 1. Fetch the specific triangle's data from the GPU
+            part.buffer.GetData(data, 0, index, 1);
+
+            // 2. Only grow it if it is currently falling or dead (Lifetime < 3.0)
+            if (data[0].Lifetime < 3.0f)
+            {
+                // Snap it back to its original position on the head
+                data[0].PositionOffset = Vector3.zero;
+        
+                // Set the timer back to 3.0 so it "sticks" to the head again
+                data[0].Lifetime = 3.0f;
+        
+                // (Optional) If you want the grown hair to reset to white, uncomment the line below. 
+                // Otherwise, it will remember the color you painted it before you cut it!
+                // data[0].Color = Vector3.one; 
+        
+                // 3. Send the fixed data back to the GPU
                 part.buffer.SetData(data, 0, index, 1);
             }
         }
@@ -193,3 +269,4 @@
             }
         }
     }
+    */

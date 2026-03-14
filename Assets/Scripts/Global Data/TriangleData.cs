@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-namespace PublicObjects
+namespace Global_Data
 {
     struct TriangleData
     {

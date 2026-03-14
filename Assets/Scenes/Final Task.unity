@@ -1196,11 +1196,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2222346464153789849, guid: 57b6517a55eebb045a002ba0b8f7f226, type: 3}
---- !u!33 &448405214 stripped
-MeshFilter:
-  m_CorrespondingSourceObject: {fileID: 1292353356046176901, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
-  m_PrefabInstance: {fileID: 6118056420933699780}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &471345631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,6 +1478,37 @@ Transform:
   - {fileID: 114974623}
   m_Father: {fileID: 1293203416}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &741608789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 741608790}
+  m_Layer: 0
+  m_Name: ===== Scripts =====
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &741608790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741608789}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &818250497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,7 +1550,6 @@ GameObject:
   m_Component:
   - component: {fileID: 842481056}
   - component: {fileID: 842481057}
-  - component: {fileID: 842481058}
   m_Layer: 0
   m_Name: Statue
   m_TagString: Untagged
@@ -1562,29 +1587,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ModelController
   modelSlotTransfrom: {fileID: 24684207}
   rotationSpeed: 150
---- !u!114 &842481058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 842481055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d984ed0069a91c498097b5fff43ad18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShaveController
-  myComputeShader: {fileID: 7200000, guid: 2f7d4c7e72eab2045936d76be54b6d4c, type: 3}
-  targetMeshFilter:
-  - {fileID: 448405214}
-  - {fileID: 1659139431}
-  gravityStrength: 5
-  lifetime: 6
-  explosionTimeScale: 0.5
-  minXZ: 0
-  maxXZ: 0
-  minY: 0
-  maxY: 0
 --- !u!1 &1176316500
 GameObject:
   m_ObjectHideFlags: 0
@@ -2125,11 +2127,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6825837178809999567, guid: 57b6517a55eebb045a002ba0b8f7f226, type: 3}
---- !u!33 &1659139431 stripped
-MeshFilter:
-  m_CorrespondingSourceObject: {fileID: 3908660836209998527, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
-  m_PrefabInstance: {fileID: 6118056420933699780}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1674723745
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,6 +2407,84 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6349010209176242424, guid: 40cea7172bc14444bb99df303da1ba96, type: 3}
   m_PrefabInstance: {fileID: 1710975863}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1826324382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1826324383}
+  - component: {fileID: 1826324386}
+  - component: {fileID: 1826324385}
+  - component: {fileID: 1826324384}
+  m_Layer: 0
+  m_Name: Groom Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1826324383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826324382}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1826324384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826324382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3a15a0bc47d7a4fb44c181dd46f959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GroomingInput
+--- !u!114 &1826324385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826324382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dac027485fdb044a9a2322d597e3eb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GroomingActions
+  minXZ: 5
+  maxXZ: 5
+  minY: 2
+  maxY: 5
+--- !u!114 &1826324386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826324382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2594b7d918ee5b741ab6c4ab2953b1a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Grooming.GroomingGPUManager
+  myComputeShader: {fileID: 7200000, guid: 2f7d4c7e72eab2045936d76be54b6d4c, type: 3}
+  targetMeshFilter: []
+  gravityStrength: 5
+  explosionTimeScale: 0.5
 --- !u!1001 &1864587771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3136,6 +3211,10 @@ PrefabInstance:
       propertyPath: myComputeShader
       value: 
       objectReference: {fileID: 7200000, guid: 2f7d4c7e72eab2045936d76be54b6d4c, type: 3}
+    - target: {fileID: 6920808066584101985, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 433492409a2ba5445b9f850d42b85142, type: 2}
     m_RemovedComponents:
     - {fileID: 6575633553075372698, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
     m_RemovedGameObjects: []
@@ -3159,5 +3238,7 @@ SceneRoots:
   - {fileID: 199683050}
   - {fileID: 1551298936}
   - {fileID: 1293203416}
+  - {fileID: 741608790}
+  - {fileID: 1826324383}
   - {fileID: 146628047}
   - {fileID: 842481056}
