@@ -16,6 +16,12 @@ namespace Manager
         public Color activeColor = Color.red; // Default starting color
 
         // This will be called by your UI Buttons
+        private void Start()
+        {
+            SetTool(0); 
+            SetColor(0);
+        }
+
         public void SetTool(int toolIndex)
         {
             activeTool = (ToolType)toolIndex;
@@ -50,7 +56,7 @@ namespace Manager
                     throw new ArgumentOutOfRangeException();
             }
             OnColorSelected?.Invoke(activeColor);
-            Debug.Log("Active Color: " + activeColor);
+            Debug.Log("Active Color: " + colorType);
         }
     }
 }
