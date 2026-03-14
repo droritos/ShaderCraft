@@ -39,8 +39,9 @@
                 int[] triangles = mesh.triangles;
                 int count = mesh.triangles.Length / 3;
             
-                // Create the individual buffer
-                ComputeBuffer buffer = new ComputeBuffer(count, 52);
+                // Set Buffer
+                int stride = System.Runtime.InteropServices.Marshal.SizeOf(typeof(TriangleData));
+                ComputeBuffer buffer = new ComputeBuffer(count, stride);
             
                 TriangleData[] initialData = new TriangleData[count];
                 for (int i = 0; i < count; i++)
@@ -152,6 +153,7 @@
                 
                     // Set lifetime back to 3.0 so they stop falling/moving
                     resetData[i].Lifetime = 3.0f;
+                    resetData[i].Color = Vector3.one; 
                 }
             
                 // 2. Upload the reset data to the specific GPU buffer for this part

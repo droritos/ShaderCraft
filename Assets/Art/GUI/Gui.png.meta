@@ -135,7 +135,7 @@ TextureImporter:
       name: GUI_Scissiers
       rect:
         serializedVersion: 2
-        x: 1468
+        x: 1462
         y: 85
         width: 450
         height: 450
@@ -206,7 +206,7 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -228,7 +228,7 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -237,6 +237,28 @@ TextureImporter:
       bones: []
       spriteID: faf1353270dca6f4e9a9eb24ca704a7d
       internalID: 70397358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gui_Color
+      rect:
+        serializedVersion: 2
+        x: 1769
+        y: 558
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9855e205a25d72b498d6f80ffd32e276
+      internalID: -216101939
       vertices: []
       indices: 
       edges: []
@@ -259,6 +281,7 @@ TextureImporter:
       GUI_Button yELLOW: 364711746
       GUI_ButtongRAY: 70397358
       GUI_Scissiers: 749436287
+      Gui_Color: -216101939
       Gui_Dye: 1375076532
       Gui_Grow: -210082785
   mipmapLimitGroupName: 
