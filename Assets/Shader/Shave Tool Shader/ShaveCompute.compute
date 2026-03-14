@@ -5,6 +5,7 @@
     {
         float3 positionOffset;
         float3 velocity;
+        float3 normal; // New member
         float lifetime;
         float3 Color;
     };
@@ -18,15 +19,24 @@
 
     // 4. The actual program that runs on the GPU
     [numthreads(64, 1, 1)]
-    void CSMain (uint3 id : SV_DispatchThreadID)
-    {//
-        TriangleData trianglesData = _TriangleBuffer[id.x];
+void CSMain (uint3 id : SV_DispatchThreadID)
+    {
+        TriangleData data = _TriangleBuffer[id.x];
 
-        if (trianglesData.lifetime < 3.00 && trianglesData.lifetime > 0.00)
+        if (data.lifetime < 3.00 && data.lifetime > 0.00)
         {
-            trianglesData.lifetime -= _DeltaTime;
-            trianglesData.positionOffset += trianglesData.velocity * _DeltaTime;
-            trianglesData.velocity.y -= _Gravity * _DeltaTime; // Apply Gravity over Time
+            data.lifetime -= _DeltaTime;
+        
+            // Apply velocity to position
+            data.positionOffset += data.velocity * _DeltaTime;
+
+            // Apply gravity to velocity
+            // TIP: If they fall too fast, decrease _Gravity in the Inspector
+            data.velocity.y -= _Gravity * _DeltaTime; 
+        
+            // Add "Air Friction" - this helps the 'spread' feel more natural
+            // It slows down the horizontal expansion over time
+            data.velocity *= (1.0 - 0.5 * _DeltaTime);
         }
-        _TriangleBuffer[id.x] = trianglesData;
+        _TriangleBuffer[id.x] = data;
     }

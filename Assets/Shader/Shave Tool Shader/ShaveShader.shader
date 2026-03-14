@@ -55,6 +55,7 @@ Shader "Custom/ShaveShader"
             {
                 float3 positionOffset;
                 float3 velocity;
+                float3 normal;
                 float lifetime;
                 float3 Color;
             };
@@ -70,7 +71,7 @@ Shader "Custom/ShaveShader"
                 return OUT;
             }
                         
-                        [maxvertexcount(3)]
+            [maxvertexcount(3)]
             void geom(triangle v2g edges[3], uint primitiveID : SV_PrimitiveID, inout TriangleStream<Varyings> triStream)
             {
                 TriangleData triData = _TriangleBuffer[primitiveID];

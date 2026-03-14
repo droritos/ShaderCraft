@@ -35,23 +35,28 @@
             foreach (MeshFilter meshFilter in targetMeshFilter)
             {
                 Mesh mesh = meshFilter.sharedMesh;
+                Vector3[] normals = mesh.normals;
+                int[] triangles = mesh.triangles;
                 int count = mesh.triangles.Length / 3;
             
                 // Create the individual buffer
-                ComputeBuffer buffer = new ComputeBuffer(count, 40);
+                ComputeBuffer buffer = new ComputeBuffer(count, 52);
             
                 TriangleData[] initialData = new TriangleData[count];
                 for (int i = 0; i < count; i++)
                 {
-                    initialData[i].PositionOffset = Vector3.zero;
-                    initialData[i].Velocity = new Vector3(
-                        UnityEngine.Random.Range(-minXZ, maxXZ), 
-                        UnityEngine.Random.Range(minY, maxY), 
-                        UnityEngine.Random.Range(-minXZ, maxXZ)
-                    );
+                    // Use the normal of the first vertex of the triangle
+                    Vector3 triNormal = normals[triangles[i * 3]];
+                    initialData[i].normal = triNormal;
+
+                    // The "Spread" Math:
+                    // We take the normal and add a bit of random 'chaos' so it's not robotic
+                    Vector3 randomDir = (triNormal + UnityEngine.Random.insideUnitSphere * 0.3f).normalized;
+                    initialData[i].Velocity = randomDir * UnityEngine.Random.Range(2.0f, 4.0f);
+    
                     initialData[i].Lifetime = 3.0f;
-                    initialData[i].Color = Vector3.one;
-                } 
+                    initialData[i].Color = Vector3.one; // Set to White
+                }
                 buffer.SetData(initialData);
 
                 // Store the part info
