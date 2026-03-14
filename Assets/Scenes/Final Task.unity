@@ -119,6 +119,38 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &24684206
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 24684207}
+  m_Layer: 0
+  m_Name: Model Slot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &24684207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24684206}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1474204895}
+  m_Father: {fileID: 842481056}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &53109936 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9149346398337422342, guid: d725c65472c91684885a4a0054df1968, type: 3}
@@ -788,6 +820,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2222346464153789849, guid: 57b6517a55eebb045a002ba0b8f7f226, type: 3}
+--- !u!33 &448405214 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 1292353356046176901, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
+  m_PrefabInstance: {fileID: 6118056420933699780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &471345631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,6 +1147,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 842481056}
+  - component: {fileID: 842481057}
+  - component: {fileID: 842481058}
   m_Layer: 0
   m_Name: Statue
   m_TagString: Untagged
@@ -1130,9 +1169,46 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1474204895}
+  - {fileID: 24684207}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &842481057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842481055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea2adc68a64930469cce4977d614206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ModelController
+  modelSlotTransfrom: {fileID: 24684207}
+  rotationSpeed: 150
+--- !u!114 &842481058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842481055}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d984ed0069a91c498097b5fff43ad18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShaveController
+  myComputeShader: {fileID: 7200000, guid: 2f7d4c7e72eab2045936d76be54b6d4c, type: 3}
+  targetMeshFilter:
+  - {fileID: 448405214}
+  - {fileID: 1659139431}
+  gravityStrength: 5
+  lifetime: 6
+  explosionTimeScale: 0.5
+  minXZ: 0
+  maxXZ: 0
+  minY: 0
+  maxY: 0
 --- !u!1 &1176316500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,6 +1570,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6825837178809999567, guid: 57b6517a55eebb045a002ba0b8f7f226, type: 3}
+--- !u!33 &1659139431 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 3908660836209998527, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
+  m_PrefabInstance: {fileID: 6118056420933699780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1674723745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,7 +1866,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 842481056}
+    m_TransformParent: {fileID: 24684207}
     m_Modifications:
     - target: {fileID: 3914312939784670151, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1851,7 +1932,8 @@ PrefabInstance:
       propertyPath: myComputeShader
       value: 
       objectReference: {fileID: 7200000, guid: 2f7d4c7e72eab2045936d76be54b6d4c, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6575633553075372698, guid: 75e71c451a675844383c0f1f2c103198, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

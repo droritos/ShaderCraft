@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3914312939784670151}
-  - component: {fileID: 6575633553075372698}
   m_Layer: 0
   m_Name: Shaved _ Ugly Monkey Head
   m_TagString: Untagged
@@ -33,29 +32,6 @@ Transform:
   - {fileID: 1255846724042878013}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6575633553075372698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4973300256797331068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d984ed0069a91c498097b5fff43ad18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShaveController
-  myComputeShader: {fileID: 0}
-  targetMeshFilter:
-  - {fileID: 1292353356046176901}
-  - {fileID: 3908660836209998527}
-  gravityStrength: 5
-  lifetime: 6
-  explosionTimeScale: 0.5
-  minXZ: 0
-  maxXZ: 0
-  minY: 0
-  maxY: 0
 --- !u!1001 &1650305983686413270
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -140,15 +116,5 @@ PrefabInstance:
 --- !u!4 &1255846724042878013 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 57b6517a55eebb045a002ba0b8f7f226, type: 3}
-  m_PrefabInstance: {fileID: 1650305983686413270}
-  m_PrefabAsset: {fileID: 0}
---- !u!33 &1292353356046176901 stripped
-MeshFilter:
-  m_CorrespondingSourceObject: {fileID: -8716633464901854893, guid: 57b6517a55eebb045a002ba0b8f7f226, type: 3}
-  m_PrefabInstance: {fileID: 1650305983686413270}
-  m_PrefabAsset: {fileID: 0}
---- !u!33 &3908660836209998527 stripped
-MeshFilter:
-  m_CorrespondingSourceObject: {fileID: 2367005397469081961, guid: 57b6517a55eebb045a002ba0b8f7f226, type: 3}
   m_PrefabInstance: {fileID: 1650305983686413270}
   m_PrefabAsset: {fileID: 0}
