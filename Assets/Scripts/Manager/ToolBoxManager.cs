@@ -26,7 +26,7 @@ namespace Manager
         {
             activeTool = (ToolType)toolIndex;
             OnToolSelected?.Invoke(activeTool);
-            Debug.Log("Active Tool: " + activeTool);
+            //Debug.Log("Active Tool: " + activeTool);
         }
 
         public void SetColor(int color)
@@ -56,7 +56,7 @@ namespace Manager
                     throw new ArgumentOutOfRangeException();
             }
             OnColorSelected?.Invoke(activeColor);
-            Debug.Log("Active Color: " + colorType);
+            //Debug.Log("Active Color: " + colorType);
         }
     }
 }
