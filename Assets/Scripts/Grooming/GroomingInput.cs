@@ -70,7 +70,7 @@ public class GroomingInput : MonoBehaviour
     private MeshPart GetHitPart(RaycastHit hit)
     {
         // We search through the GPU Manager's public list of mesh parts
-        return _gpuManager.meshParts.Find(p => 
+        return _gpuManager.MeshParts.Find(p => 
             p.material == hit.collider.GetComponent<MeshRenderer>().sharedMaterial || 
             p.material.name.Contains(hit.collider.GetComponent<MeshRenderer>().material.name.Replace(" (Instance)", ""))
         );

@@ -23,7 +23,7 @@ namespace Statue
             // We "Initialize" our pure C# class here
             _rotationHandler = new RotationHandler(rotationSpeed);
         
-            _modelTransfrom = modelSlotTransfrom.GetChild(0).transform; // The child is the Model/State/Head
+            //  _modelTransfrom = modelSlotTransfrom.GetChild(0).transform; // The child is the Model/State/Head
         }
 
         void Update()
@@ -35,7 +35,7 @@ namespace Statue
             float rotationAmount = _rotationHandler.CalculateRotation(input, Time.deltaTime);
 
             // 3. Apply the result to the Transform
-            _modelTransfrom.Rotate(Vector3.up, -rotationAmount);
+            _modelTransfrom?.Rotate(Vector3.up, -rotationAmount);
         }
     }
 }

@@ -72,7 +72,7 @@ public class GroomingActions : MonoBehaviour
     public void ResetAll()
     {
         // We use the public 'meshParts' list we created in the GPU Manager
-        foreach (MeshPart part in _gpuManager.meshParts)
+        foreach (MeshPart part in _gpuManager.MeshParts)
         {
             TriangleData[] resetData = new TriangleData[part.triangleCount];
             for (int i = 0; i < part.triangleCount; i++)
