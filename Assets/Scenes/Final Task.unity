@@ -1937,7 +1937,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53ad87da0a7a85a459a2a3a20c66e56e, type: 2}
+  - {fileID: -876546973899608171, guid: 1af1c1e8cb20c5e4db069269003498f6, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2553,7 +2553,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Grooming.ShaveTool
   mainCamera: {fileID: 471345633}
   shaveCanvas: {fileID: 8600000, guid: 210e5e114f12abc4d8533d7e49547de7, type: 2}
-  brushMaterial: {fileID: 2100000, guid: 513582fd9fd90b048803d2e278bc6033, type: 2}
 --- !u!1001 &1864587771
 PrefabInstance:
   m_ObjectHideFlags: 0

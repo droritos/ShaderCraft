@@ -24,6 +24,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _HairLengthMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _ShaveMask:
         m_Texture: {fileID: 8600000, guid: 210e5e114f12abc4d8533d7e49547de7, type: 2}
         m_Scale: {x: 1, y: 1}

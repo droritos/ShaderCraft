@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Shave
-  m_Shader: {fileID: 4800000, guid: 229eb9542a9e7b34c8219992d807a187, type: 3}
+  m_Name: CRT_ShaveMask
+  m_Shader: {fileID: 4800000, guid: db32c8b46ba27ff47a78f234858e5a0a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -22,14 +22,12 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _BaseMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _BrushSize: 0.05
+    - _PaintValue: 0
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HitUV: {r: 0.07923089, g: 0.31200078, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

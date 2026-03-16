@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Grooming
@@ -8,7 +7,17 @@ namespace Grooming
         [Header("References")]
         public Camera mainCamera;
         public CustomRenderTexture shaveCanvas;
-        public Material brushMaterial; // We will slot our M_Brush here
+
+        Material runtimeMaterial;
+
+        void Start()
+        {
+            if (shaveCanvas != null)
+            {
+                shaveCanvas.Initialize();
+                runtimeMaterial = shaveCanvas.material;
+            }
+        }
 
         void Update()
         {
@@ -19,13 +28,16 @@ namespace Grooming
 
                 if (Physics.Raycast(ray, out hit, 100f))
                 {
-                    // Get the UV coordinate of the hit
                     Vector2 hitUV = hit.textureCoord;
-                
-                    // Tell the brush material where we clicked
-                    brushMaterial.SetVector(Global_Data.GlobalData.ShaderProperties.HitUV, hitUV);
 
-                    // Tell the Custom Render Texture to update using our brush
+                    Debug.Log("I hit the object at UV: " + hitUV);
+
+                    if (runtimeMaterial != null)
+                    {
+                        Vector4 brushUV = new Vector4(hitUV.x, hitUV.y, 0, 0);
+                        runtimeMaterial.SetVector(Global_Data.GlobalData.ShaderProperties.HitUV, brushUV);
+                    }
+
                     shaveCanvas.Update();
                 }
             }
@@ -33,7 +45,7 @@ namespace Grooming
 
         private void OnValidate()
         {
-            if(!mainCamera)
+            if (!mainCamera)
                 mainCamera = Camera.main;
         }
     }
