@@ -28,6 +28,6 @@ Material:
     - _BrushSize: 0.05
     - _PaintValue: 0
     m_Colors:
-    - _HitUV: {r: 0.07923089, g: 0.31200078, b: 0, a: 0}
+    - _HitUV: {r: 0.35975656, g: 0.71676284, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
