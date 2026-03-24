@@ -489,11 +489,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26b4353b54cde3d4785682ca45b80585, type: 3}
---- !u!4 &968340883 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2280443371000558948, guid: 1d5ebcf66c3ac5a438551f840aaf27c3, type: 3}
-  m_PrefabInstance: {fileID: 594855886}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &993655520
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,7 +866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Statue.ModelController
   <GroomableObject>k__BackingField: {fileID: 0}
-  modelSlotTransfrom: {fileID: 968340883}
+  modelSlotTransfrom: {fileID: 1363121330}
   rotationSpeed: 150
 --- !u!4 &1637776499
 Transform:
