@@ -3,7 +3,7 @@ Shader "Custom/CRT_BrushCode"
     Properties
     {
         _BrushSize ("Brush Size", Float) = 0.05
-        _PaintValue ("Paint Value", Float) = 0.0
+        _PaintValue ("Paint Value", Float) = 0.1
         _HitUV ("Hit UV", Vector) = (-1,-1,0,0)
     }
 
@@ -39,7 +39,7 @@ Shader "Custom/CRT_BrushCode"
                 float brush = 1 - smoothstep(_BrushSize * 0.5, _BrushSize, dist); 
                 
                 // Paint over previous frame
-                float result = oldValue - brush * 0.05;
+                float result = oldValue + (brush * _PaintValue);
                 result = saturate(result);
                 return float4(result, result, result, 1);
             }
