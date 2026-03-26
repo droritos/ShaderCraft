@@ -45,9 +45,9 @@ namespace Grooming
         {
             switch (currentTool)
             {
-                case ToolType.Shave: painter.PaintLength(uv, cutSpeed); break;
-                case ToolType.Grow:  painter.PaintLength(uv, growSpeed); break;
-                case ToolType.Color: painter.PaintColor(uv, currentColor); break;
+                case ToolType.Shave: painter.PaintLength(uv, cutSpeed,brushSize); break;
+                case ToolType.Grow:  painter.PaintLength(uv, growSpeed,brushSize); break;
+                case ToolType.Color: painter.PaintColor(uv, currentColor,brushSize); break;
             }
         }
         private void HandleFurHover(Vector2 uv)
