@@ -1,6 +1,6 @@
-using Global_Data;
 using UnityEngine;
 using Manager;
+using Global_Data;
 
 namespace Grooming
 {
@@ -11,74 +11,62 @@ namespace Grooming
         [SerializeField] CanvasPainter painter;
 
         [Header("Tool Settings")]
+        [SerializeField] float brushSize = 0.1f; // Keep this matched with your CRT brush size!
         [SerializeField] float cutSpeed = -0.05f;  
         [SerializeField] float growSpeed = 0.05f;  
         [SerializeField] Color currentColor = Color.red;
 
-        private ToolType _currentTool;
+        private ToolType currentTool;
 
         void OnEnable()
         {
-            // Subscribe to the Raycaster's shouts
             if (raycaster != null)
             {
                 raycaster.OnFurHit += HandleFurHit;
+                raycaster.OnFurHover += HandleFurHover; // Subscribe to hover
                 raycaster.OnInteractionStopped += HandleInteractionStopped;
             }
-
-            // Subscribe to your UI Manager
-            if (ToolBoxManager.Instance != null)
-            {
-                ToolBoxManager.Instance.OnToolSelected += ChangeTool;
-                ToolBoxManager.Instance.OnColorSelected += SetSprayColor;
-            }
+            if (ToolBoxManager.Instance != null) ToolBoxManager.Instance.OnToolSelected += ChangeTool;
+            if (ToolBoxManager.Instance != null) ToolBoxManager.Instance.OnColorSelected += SetSprayColor;
         }
 
         void OnDisable()
         {
-            // ALWAYS Unsubscribe to prevent memory leaks!
             if (raycaster != null)
             {
                 raycaster.OnFurHit -= HandleFurHit;
+                raycaster.OnFurHover -= HandleFurHover; // Unsubscribe
                 raycaster.OnInteractionStopped -= HandleInteractionStopped;
             }
-
-            if (ToolBoxManager.Instance != null)
-            {
-                ToolBoxManager.Instance.OnToolSelected -= ChangeTool;
-                ToolBoxManager.Instance.OnColorSelected -= SetSprayColor;
-            }
+            if (ToolBoxManager.Instance != null) ToolBoxManager.Instance.OnToolSelected -= ChangeTool;
+            if (ToolBoxManager.Instance != null) ToolBoxManager.Instance.OnColorSelected -= SetSprayColor;
         }
-
-        // The Raycaster shouted that we hit the fur!
         private void HandleFurHit(Vector2 uv)
         {
-            switch (_currentTool)
+            switch (currentTool)
             {
-                case ToolType.Shave:
-                    painter.PaintLength(uv, cutSpeed);
-                    break;
-                case ToolType.Grow:
-                    painter.PaintLength(uv, growSpeed);
-                    break;
-                case ToolType.Color:
-                    painter.PaintColor(uv, currentColor);
-                    break;
+                case ToolType.Shave: painter.PaintLength(uv, cutSpeed); break;
+                case ToolType.Grow:  painter.PaintLength(uv, growSpeed); break;
+                case ToolType.Color: painter.PaintColor(uv, currentColor); break;
             }
         }
+        private void HandleFurHover(Vector2 uv)
+        {
+            // Instead of telling one material, we broadcast this globally!
+            Shader.SetGlobalVector(GlobalData.ShaderIDs.HitUV, new Vector4(uv.x, uv.y, 0, 0));
+            Shader.SetGlobalFloat(GlobalData.ShaderIDs.BrushSize, brushSize);
+        }
 
-        // The Raycaster shouted that the player stopped clicking
         private void HandleInteractionStopped()
         {
             painter.StopAllPainting();
+            
+            // Move the global cursor off-screen so the ring disappears
+            Shader.SetGlobalVector(GlobalData.ShaderIDs.HitUV, new Vector4(-1, -1, 0, 0));
         }
 
-        private void ChangeTool(ToolType newTool)
-        {
-            _currentTool = newTool;
-        }
-
-        // Connect this to your UI buttons!
+        private void ChangeTool(ToolType newTool) { currentTool = newTool; }
+        
         public void SetSprayColor(Color newColor)
         {
             currentColor = newColor;

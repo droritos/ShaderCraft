@@ -837,6 +837,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Grooming.ToolController
   raycaster: {fileID: 1622574316}
   painter: {fileID: 1622574317}
+  mainFurMaterial: {fileID: 2100000, guid: 53ad87da0a7a85a459a2a3a20c66e56e, type: 2}
+  brushSize: 0.1
   cutSpeed: -0.05
   growSpeed: 0.05
   currentColor: {r: 1, g: 1, b: 1, a: 1}

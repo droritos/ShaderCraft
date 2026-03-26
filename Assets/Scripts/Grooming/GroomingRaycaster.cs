@@ -7,30 +7,30 @@ namespace Grooming
     {
         [SerializeField] Camera mainCamera;
 
-        // We use 'Actions' (Events) so other scripts can listen to this one without being tightly coupled to it.
-        public event Action<Vector2> OnFurHit;
-        public event Action OnInteractionStopped;
+        public event Action<Vector2> OnFurHit;     
+        public event Action<Vector2> OnFurHover;   
+        public event Action OnInteractionStopped;  
 
         void Update()
         {
-            if (Input.GetMouseButton(0))
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            
+            if (Physics.Raycast(ray, out RaycastHit hit, 100f))
             {
-                Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-                
-                if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+                // 1. Hide the Windows cursor so the player focuses on the 3D ring
+                Cursor.visible = false;
+
+                OnFurHover?.Invoke(hit.textureCoord);
+
+                if (Input.GetMouseButton(0))
                 {
-                    // Shout to anyone listening: "We hit the fur at this UV coordinate!"
                     OnFurHit?.Invoke(hit.textureCoord);
-                }
-                else
-                {
-                    // We clicked, but missed the fur
-                    OnInteractionStopped?.Invoke();
                 }
             }
             else
             {
-                // We aren't clicking at all
+                // 2. We missed the fur, bring the Windows cursor back!
+                Cursor.visible = true;
                 OnInteractionStopped?.Invoke();
             }
         }
@@ -38,6 +38,12 @@ namespace Grooming
         private void OnValidate()
         {
             if (!mainCamera) mainCamera = Camera.main;
+        }
+        
+        // Make sure the cursor always comes back if the object is destroyed
+        private void OnDisable()
+        {
+            Cursor.visible = true;
         }
     }
 }
