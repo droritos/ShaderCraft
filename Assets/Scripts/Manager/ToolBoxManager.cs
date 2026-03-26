@@ -38,7 +38,7 @@ namespace Manager
                     activeColor = Color.red;
                     break;
                 case ColorType.Blue:
-                    activeColor = Color.blue;
+                    activeColor = Color.cyan;
                     break;
                 case ColorType.Green:
                     activeColor = Color.green;

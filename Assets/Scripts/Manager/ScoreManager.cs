@@ -58,7 +58,6 @@ namespace Manager
 
             float matchPercentage = ((float)matchingPixels / totalPixels) * 100f;
             EventManager.ScoreSystem.RaiseMatchValue(matchPercentage);
-            Debug.Log($"<color=green><b>Final Grooming Score: {matchPercentage:F1}%</b></color>");
         }
     }
 }
