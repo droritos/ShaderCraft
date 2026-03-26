@@ -53,8 +53,8 @@ namespace Grooming
         private void HandleFurHover(Vector2 uv)
         {
             // Instead of telling one material, we broadcast this globally!
-            Shader.SetGlobalVector(GlobalData.ShaderIDs.HitUV, new Vector4(uv.x, uv.y, 0, 0));
-            Shader.SetGlobalFloat(GlobalData.ShaderIDs.BrushSize, brushSize);
+            Shader.SetGlobalVector(GlobalMembers.ShaderIDs.HitUV, new Vector4(uv.x, uv.y, 0, 0));
+            Shader.SetGlobalFloat(GlobalMembers.ShaderIDs.BrushSize, brushSize);
         }
 
         private void HandleInteractionStopped()
@@ -62,7 +62,7 @@ namespace Grooming
             painter.StopAllPainting();
             
             // Move the global cursor off-screen so the ring disappears
-            Shader.SetGlobalVector(GlobalData.ShaderIDs.HitUV, new Vector4(-1, -1, 0, 0));
+            Shader.SetGlobalVector(GlobalMembers.ShaderIDs.HitUV, new Vector4(-1, -1, 0, 0));
         }
 
         private void ChangeTool(ToolType newTool) { currentTool = newTool; }

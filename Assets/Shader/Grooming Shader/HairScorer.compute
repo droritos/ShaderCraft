@@ -1,0 +1,45 @@
+#pragma kernel ScoreHair
+
+// The Length Maps
+Texture2D<float4> PlayerCanvas;
+Texture2D<float4> TargetCanvas;
+
+// The Color Maps
+Texture2D<float4> PlayerColorCanvas;
+Texture2D<float4> TargetColorCanvas;
+
+RWStructuredBuffer<int> ResultBuffer;
+
+float Tolerance; 
+uint Resolution; 
+
+[numthreads(8, 8, 1)]
+void ScoreHair (uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= Resolution || id.y >= Resolution) return;
+
+    float playerLength = PlayerCanvas[id.xy].r;
+    float targetLength = TargetCanvas[id.xy].r;
+
+    float3 playerColor = PlayerColorCanvas[id.xy].rgb;
+    float3 targetColor = TargetColorCanvas[id.xy].rgb;
+
+    float lengthDiff = abs(playerLength - targetLength);
+    
+    if (lengthDiff <= Tolerance)
+    {
+        if (targetLength < 0.1)
+        {
+            InterlockedAdd(ResultBuffer[0], 1);
+        }
+        else
+        {
+            // 0.3 to give the player a tiny bit of wiggle room for blended edges.
+            float colorDiff = distance(playerColor, targetColor);
+            if (colorDiff <= 0.3)
+            {
+                InterlockedAdd(ResultBuffer[0], 1);
+            }
+        }
+    }
+}

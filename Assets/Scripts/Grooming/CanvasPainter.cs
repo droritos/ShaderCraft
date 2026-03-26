@@ -33,9 +33,9 @@ namespace Grooming
             if (shaveMaterial == null) return;
             
             Vector4 brushUV = new Vector4(uv.x, uv.y, 0, 0);
-            shaveMaterial.SetVector(GlobalData.ShaderIDs.HitUV, brushUV);
-            shaveMaterial.SetFloat(GlobalData.ShaderIDs.PaintValue, value);
-            shaveMaterial.SetFloat(GlobalData.ShaderIDs.BrushSize, brushSize); 
+            shaveMaterial.SetVector(GlobalMembers.ShaderIDs.HitUV, brushUV);
+            shaveMaterial.SetFloat(GlobalMembers.ShaderIDs.PaintValue, value);
+            shaveMaterial.SetFloat(GlobalMembers.ShaderIDs.BrushSize, brushSize); 
             
             shaveCanvas.Update();
         }
@@ -45,9 +45,9 @@ namespace Grooming
             if (colorMaterial == null) return;
 
             Vector4 brushUV = new Vector4(uv.x, uv.y, 0, 0);
-            colorMaterial.SetVector(GlobalData.ShaderIDs.HitUV, brushUV);
-            colorMaterial.SetColor(GlobalData.ShaderIDs.PaintColor, color);
-            colorMaterial.SetFloat(GlobalData.ShaderIDs.BrushSize, brushSize);
+            colorMaterial.SetVector(GlobalMembers.ShaderIDs.HitUV, brushUV);
+            colorMaterial.SetColor(GlobalMembers.ShaderIDs.PaintColor, color);
+            colorMaterial.SetFloat(GlobalMembers.ShaderIDs.BrushSize, brushSize);
             
             colorCanvas.Update();
         }
@@ -58,13 +58,13 @@ namespace Grooming
             
             if (shaveMaterial != null)
             {
-                shaveMaterial.SetVector(GlobalData.ShaderIDs.HitUV, offScreen);
+                shaveMaterial.SetVector(GlobalMembers.ShaderIDs.HitUV, offScreen);
                 shaveCanvas.Update();
             }
 
             if (colorMaterial != null)
             {
-                colorMaterial.SetVector(GlobalData.ShaderIDs.HitUV, offScreen);
+                colorMaterial.SetVector(GlobalMembers.ShaderIDs.HitUV, offScreen);
                 colorCanvas.Update();
             }
         }
