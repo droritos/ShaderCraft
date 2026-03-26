@@ -50,7 +50,7 @@ namespace Manager
                     activeColor = Color.magenta;
                     break;
                 case ColorType.Pink:
-                    activeColor = Color.cyan;
+                    activeColor = Color.pink;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

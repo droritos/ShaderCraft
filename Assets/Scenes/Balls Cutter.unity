@@ -447,6 +447,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2198509171991201612, guid: 26b4353b54cde3d4785682ca45b80585, type: 3}
+      propertyPath: m_Name
+      value: Magenta Button
+      objectReference: {fileID: 0}
     - target: {fileID: 2850481141639932059, guid: 26b4353b54cde3d4785682ca45b80585, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -776,10 +780,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1622574312}
-  - component: {fileID: 1622574313}
   - component: {fileID: 1622574314}
+  - component: {fileID: 1622574317}
+  - component: {fileID: 1622574316}
+  - component: {fileID: 1622574315}
   m_Layer: 0
-  m_Name: Shave Tool
+  m_Name: Grooming System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -800,23 +806,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1622574313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622574311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 154e816bee74cd845973e72fdb83a796, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Grooming.ShaveTool
-  mainCamera: {fileID: 898183173}
-  shaveCanvas: {fileID: 8600000, guid: 210e5e114f12abc4d8533d7e49547de7, type: 2}
-  cutSpeed: -0.05
-  growSpeed: 0.05
-  currentTool: 0
 --- !u!114 &1622574314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -834,6 +823,50 @@ MonoBehaviour:
   parent: {fileID: 1281531086}
   shellCount: 32
   furLength: 1
+--- !u!114 &1622574315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622574311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e43bd58f0bbc94992067699e51926e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Grooming.ToolController
+  raycaster: {fileID: 1622574316}
+  painter: {fileID: 1622574317}
+  cutSpeed: -0.05
+  growSpeed: 0.05
+  currentColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &1622574316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622574311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a19ce933b12a624f957f5a2aeaf34b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Grooming.GroomingRaycaster
+  mainCamera: {fileID: 898183173}
+--- !u!114 &1622574317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622574311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4885fd93c93000a48b70885c9c2c8b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Grooming.CanvasPainter
+  shaveCanvas: {fileID: 8600000, guid: 210e5e114f12abc4d8533d7e49547de7, type: 2}
+  colorCanvas: {fileID: 8600000, guid: 419f257402211684786fc1b495783e3b, type: 2}
 --- !u!1 &1637776497
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CRT_ShaveMask
-  m_Shader: {fileID: 4800000, guid: db32c8b46ba27ff47a78f234858e5a0a, type: 3}
+  m_Name: CRT_ColorBrush
+  m_Shader: {fileID: 4800000, guid: 2078505bc1c8e4b469a9ddb6c4fdb157, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -25,9 +25,9 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _BrushSize: 0.05
-    - _PaintValue: 0.05
+    - _BrushSize: 0.1
     m_Colors:
     - _HitUV: {r: -1, g: -1, b: 0, a: 0}
+    - _PaintColor: {r: 0, g: 0, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

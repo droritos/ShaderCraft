@@ -1,4 +1,3 @@
-using Groomable_Object_Scripts;
 using UnityEngine;
 
 namespace Statue
