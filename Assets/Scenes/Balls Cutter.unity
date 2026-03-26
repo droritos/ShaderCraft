@@ -771,104 +771,6 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 8120094678369373457, guid: 1d5ebcf66c3ac5a438551f840aaf27c3, type: 3}
   m_PrefabInstance: {fileID: 594855886}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1622574311
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1622574312}
-  - component: {fileID: 1622574314}
-  - component: {fileID: 1622574317}
-  - component: {fileID: 1622574316}
-  - component: {fileID: 1622574315}
-  m_Layer: 0
-  m_Name: Grooming System
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1622574312
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622574311}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1622574314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622574311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39df58fe08742024ea3724d9b3b8e1a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FurShellGenerator
-  targetMeshFilter: {fileID: 1363121329}
-  furMaterial: {fileID: 2100000, guid: 53ad87da0a7a85a459a2a3a20c66e56e, type: 2}
-  parent: {fileID: 1281531086}
-  shellCount: 32
-  furLength: 1
---- !u!114 &1622574315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622574311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47e43bd58f0bbc94992067699e51926e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Grooming.ToolController
-  raycaster: {fileID: 1622574316}
-  painter: {fileID: 1622574317}
-  mainFurMaterial: {fileID: 2100000, guid: 53ad87da0a7a85a459a2a3a20c66e56e, type: 2}
-  brushSize: 0.1
-  cutSpeed: -0.05
-  growSpeed: 0.05
-  currentColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &1622574316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622574311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a19ce933b12a624f957f5a2aeaf34b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Grooming.GroomingRaycaster
-  mainCamera: {fileID: 898183173}
---- !u!114 &1622574317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622574311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4885fd93c93000a48b70885c9c2c8b56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Grooming.CanvasPainter
-  shaveCanvas: {fileID: 8600000, guid: 210e5e114f12abc4d8533d7e49547de7, type: 2}
-  colorCanvas: {fileID: 8600000, guid: 419f257402211684786fc1b495783e3b, type: 2}
 --- !u!1 &1637776497
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,12 +848,77 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4054491171943603446
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2113458854324513937, guid: 32de6d5dd571de247b893d779826f915, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113458854324513937, guid: 32de6d5dd571de247b893d779826f915, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113458854324513937, guid: 32de6d5dd571de247b893d779826f915, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113458854324513937, guid: 32de6d5dd571de247b893d779826f915, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113458854324513937, guid: 32de6d5dd571de247b893d779826f915, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113458854324513937, guid: 32de6d5dd571de247b893d779826f915, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113458854324513937, guid: 32de6d5dd571de247b893d779826f915, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113458854324513937, guid: 32de6d5dd571de247b893d779826f915, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113458854324513937, guid: 32de6d5dd571de247b893d779826f915, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113458854324513937, guid: 32de6d5dd571de247b893d779826f915, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562002362716664377, guid: 32de6d5dd571de247b893d779826f915, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1281531086}
+    - target: {fileID: 5562002362716664377, guid: 32de6d5dd571de247b893d779826f915, type: 3}
+      propertyPath: targetMeshFilter
+      value: 
+      objectReference: {fileID: 1363121329}
+    - target: {fileID: 7208380319640771781, guid: 32de6d5dd571de247b893d779826f915, type: 3}
+      propertyPath: m_Name
+      value: Grooming System
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 32de6d5dd571de247b893d779826f915, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1251104539}
-  - {fileID: 1622574312}
+  - {fileID: 4054491171943603446}
   - {fileID: 1637776499}
   - {fileID: 1984760674}
   - {fileID: 968143300}

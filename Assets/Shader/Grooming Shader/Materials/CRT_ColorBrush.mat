@@ -25,9 +25,9 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _BrushSize: 0.1
+    - _BrushSize: 0.5
     m_Colors:
     - _HitUV: {r: -1, g: -1, b: 0, a: 0}
-    - _PaintColor: {r: 1, g: 0, b: 0, a: 1}
+    - _PaintColor: {r: 0, g: 0, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
