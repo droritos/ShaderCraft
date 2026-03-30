@@ -19,7 +19,7 @@ namespace Manager
         private void Awake()
         {
             EventManager.ButtonsOnClickEvent.ChangeDifficulty += ChangeDifficulty;
-            ChangeDifficulty(DifficultyType.Easy); // Start with Easy mode
+            //ChangeDifficulty(DifficultyType.Easy); // Start with Easy mode
         }
 
         private void OnDestroy()

@@ -1,31 +1,44 @@
-using System.Collections;
 using Manager;
 using TMPro;
 using UnityEngine;
+using DG.Tweening; 
 
 namespace GameGUI
 {
-    public class ScoreGUI : MonoBehaviour // Later on should be handled by a Manager!
+    public class ScoreGUI : MonoBehaviour 
     {
         [SerializeField] private TextMeshProUGUI _textMeshProUGUI;
-        [SerializeField] ResultGUI _resultGUI;
-        private const string Percent = "%";
+        [SerializeField] private ResultGUI _resultGUI;
+        [SerializeField] private float popDuration = 0.5f;
+
         void Start()
         {
-            EventManager.ScoreSystem.MatchValue += StartDisplay;
+            EventManager.ScoreSystem.MatchValue += HandleDisplay;
+
+            _resultGUI.transform.localScale = Vector3.zero;
+            _resultGUI.gameObject.SetActive(false);
         }
-
-        private void StartDisplay(float matchValue) => StartCoroutine(HandleDisplay((int)matchValue));
-
-        IEnumerator HandleDisplay(int matchValue)
+        
+        private void OnDestroy()
         {
-            _textMeshProUGUI.text = matchValue + Percent;
-            _textMeshProUGUI.gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.5f);
-            
-            _textMeshProUGUI.gameObject.SetActive(false);
+            EventManager.ScoreSystem.MatchValue -= HandleDisplay;
         }
-        
-        
+
+        private void HandleDisplay(float matchValue)
+        {
+            _resultGUI.DisplayResults(matchValue);
+            _resultGUI.gameObject.SetActive(true);
+            _resultGUI.transform.DOScale(Vector3.one, popDuration).SetEase(Ease.OutBack);
+        }
+
+        public void HideDisplay()
+        {
+            _resultGUI.transform.DOScale(Vector3.zero, popDuration)
+                .SetEase(Ease.InBack)
+                .OnComplete(() => 
+                {
+                    _resultGUI.gameObject.SetActive(false);
+                });
+        }
     }
 }

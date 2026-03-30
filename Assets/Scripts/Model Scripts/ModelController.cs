@@ -1,3 +1,5 @@
+using Global_Data;
+using Manager;
 using UnityEngine;
 
 namespace Statue
@@ -18,12 +20,17 @@ namespace Statue
 
         void Start()
         {
+            HandleModelEnable(false); // make sure its false
+            EventManager.ScoreSystem.MatchValue += (float _) => HandleModelEnable(false); // when finish disable it
+            EventManager.ButtonsOnClickEvent.ChangeDifficulty += (DifficultyType _) => HandleModelEnable(true); // after selection enable it
+            
             // We "Initialize" our pure C# class here
             _rotationHandler = new RotationHandler(rotationSpeed);
+            
         
             //_modelTransfrom = _modelTransfrom.transform; // The child is the Model/State/Head
         }
-
+        
         void Update()
         {
             // 1. Get Input
@@ -34,6 +41,11 @@ namespace Statue
 
             // 3. Apply the result to the Transform
             modelSlotTransfrom?.Rotate(Vector3.up, -rotationAmount);
+        }
+
+        private void HandleModelEnable(bool enable)
+        {
+            modelSlotTransfrom.gameObject.SetActive(enable);
         }
     }
 }

@@ -94,13 +94,13 @@ namespace Manager
         private float CalculatePercentage(int matchingPixels, int resolution)
         {
             int totalPixels = resolution * resolution;
-    
+
             float rawPercentage = ((float)matchingPixels / totalPixels) * 100f;
 
-            float curvedScore = Mathf.InverseLerp(30f, 60f, rawPercentage) * 100f;
+            float curvedScore = Mathf.InverseLerp(60f, 80f, rawPercentage) * 100f;
 
             Debug.Log($"<color=yellow>Raw Score: {rawPercentage:F1}% | Curved Final Score: {curvedScore:F1}%</color>");
-    
+
             return curvedScore;
         }
     }
