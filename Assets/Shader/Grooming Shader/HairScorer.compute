@@ -11,7 +11,8 @@ Texture2D<float4> TargetColorCanvas;
 RWStructuredBuffer<int> ResultBuffer;
 
 float Tolerance; 
-uint Resolution; 
+uint Resolution;
+uint ScaleFactor;
 
 [numthreads(8, 8, 1)]
 void ScoreHair (uint3 id : SV_DispatchThreadID)
@@ -19,10 +20,14 @@ void ScoreHair (uint3 id : SV_DispatchThreadID)
     if (id.x >= Resolution || id.y >= Resolution) return;
 
     float playerLength = PlayerCanvas[id.xy].r;
-    float targetLength = TargetCanvas[id.xy].r;
+    
+    // NEW: Multiply the Target's XY by the Scale Factor!
+    float targetLength = TargetCanvas[id.xy * ScaleFactor].r; 
 
     float3 playerColor = PlayerColorCanvas[id.xy].rgb;
-    float3 targetColor = TargetColorCanvas[id.xy].rgb;
+    
+    // NEW: Multiply the Target's XY by the Scale Factor!
+    float3 targetColor = TargetColorCanvas[id.xy * ScaleFactor].rgb;
 
     float lengthDiff = abs(playerLength - targetLength);
     
