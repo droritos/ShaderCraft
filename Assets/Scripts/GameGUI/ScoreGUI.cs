@@ -8,6 +8,7 @@ namespace GameGUI
     public class ScoreGUI : MonoBehaviour // Later on should be handled by a Manager!
     {
         [SerializeField] private TextMeshProUGUI _textMeshProUGUI;
+        [SerializeField] ResultGUI _resultGUI;
         private const string Percent = "%";
         void Start()
         {
@@ -24,5 +25,7 @@ namespace GameGUI
             
             _textMeshProUGUI.gameObject.SetActive(false);
         }
+        
+        
     }
 }
