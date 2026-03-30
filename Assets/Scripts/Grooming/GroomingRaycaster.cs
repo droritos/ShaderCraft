@@ -8,7 +8,7 @@ namespace Grooming
     {
         [SerializeField] Camera mainCamera;
 
-        public event Action<Vector2> OnFurHit;     
+        public event Action<Vector2, Vector3> OnFurHit;
         public event Action<Vector2> OnFurHover;   
         public event Action OnInteractionStopped; 
         
@@ -34,14 +34,18 @@ namespace Grooming
 
                 if (Input.GetMouseButton(0))
                 {
-                    OnFurHit?.Invoke(hit.textureCoord);
+                    OnFurHit?.Invoke(hit.textureCoord,hit.point);
                 }
+                
+                //Debug.Log("Cursor should be not visible");
             }
             else
             {
                 // 2. We missed the fur, bring the Windows cursor back!
                 Cursor.visible = true;
                 OnInteractionStopped?.Invoke();
+                //Debug.Log("Cursor need to be visible");
+                
             }
         }
 

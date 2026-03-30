@@ -1,4 +1,5 @@
 using Global_Data;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Manager
@@ -35,7 +36,13 @@ namespace Manager
         public static class PauseSystem
         {
             public static event UnityAction<bool> Pause;
-            public static void RaisePause(bool isPause) => Pause?.Invoke(isPause);
+            public static void RaisePause(bool isPause)
+            {
+                if(isPause)
+                    Cursor.visible = true; // About 99% UI opens so Cursor must be on
+                Pause?.Invoke(isPause);
+                
+            }
         }
     }
 }

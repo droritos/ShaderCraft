@@ -4,10 +4,16 @@ using UnityEngine;
 
 namespace Statue
 {
-    public class ModelController : MonoBehaviour
+    public class CustomerModelController : MonoBehaviour
     {
+        #region << Sharable Members >>
+        [field:SerializeField] public CustomRenderTexture CustomerFurTexture {get; private set;}
+        [field:SerializeField] public CustomRenderTexture CustomerColorCanvas{ get; private set;}
+        #endregion
+        
         [Header("References")]
         [SerializeField] private Transform modelSlotTransfrom; 
+ 
     
         [Header("Settings")]
         [SerializeField] float rotationSpeed = 150f;

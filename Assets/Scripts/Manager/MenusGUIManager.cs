@@ -19,12 +19,6 @@ namespace Manager
             hardModeButton.onClick.AddListener(() => SwitchDifficulty(DifficultyType.Hard));
         }
 
-        private void SwitchDifficulty(DifficultyType difficulty)
-        {
-            EventManager.ButtonsOnClickEvent.RaiseChangeDifficulty(difficulty);
-            optionPanel.SetActive(false);
-        }
-
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -33,5 +27,12 @@ namespace Manager
                 EventManager.PauseSystem.RaisePause(optionPanel.activeSelf);
             }
         }
+        private void SwitchDifficulty(DifficultyType difficulty)
+        {
+            EventManager.ButtonsOnClickEvent.RaiseChangeDifficulty(difficulty);
+            optionPanel.SetActive(false);
+            EventManager.PauseSystem.RaisePause(false);
+        }
+
     }
 }

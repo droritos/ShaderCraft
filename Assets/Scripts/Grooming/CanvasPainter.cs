@@ -1,71 +1,79 @@
+using System;
 using Global_Data;
+using Statue;
 using UnityEngine;
 
 namespace Grooming
 {
     public class CanvasPainter : MonoBehaviour
     {
-        [Header("Length Canvas")]
-        [SerializeField] CustomRenderTexture shaveCanvas;
-        Material shaveMaterial;
+        [SerializeField] CustomerModelController _customerModelController;
 
-        [Header("Color Canvas")]
-        [SerializeField] CustomRenderTexture colorCanvas;
-        Material colorMaterial;
+        private CustomRenderTexture _furCanvas => _customerModelController.CustomerFurTexture;
+        private Material _shaveMaterial;
+
+        private CustomRenderTexture _colorCanvas => _customerModelController.CustomerColorCanvas;
+        private Material _colorMaterial;
 
         void Start()
         {
-            if (shaveCanvas != null)
+            if (_furCanvas != null)
             {
-                shaveCanvas.Initialize();
-                shaveMaterial = shaveCanvas.material;
+                _furCanvas.Initialize();
+                _shaveMaterial = _furCanvas.material;
             }
             
-            if (colorCanvas != null)
+            if (_colorCanvas != null)
             {
-                colorCanvas.Initialize();
-                colorMaterial = colorCanvas.material;
+                _colorCanvas.Initialize();
+                _colorMaterial = _colorCanvas.material;
             }
+        }
+
+        private void OnValidate()
+        {
+            if(!_customerModelController)
+                _customerModelController = FindAnyObjectByType<CustomerModelController>();
         }
 
         public void PaintLength(Vector2 uv, float value, float brushSize)
         {
-            if (shaveMaterial == null) return;
+            if (_shaveMaterial == null) return;
             
             Vector4 brushUV = new Vector4(uv.x, uv.y, 0, 0);
-            shaveMaterial.SetVector(GlobalMembers.ShaderIDs.HitUV, brushUV);
-            shaveMaterial.SetFloat(GlobalMembers.ShaderIDs.PaintValue, value);
-            shaveMaterial.SetFloat(GlobalMembers.ShaderIDs.BrushSize, brushSize); 
+            _shaveMaterial.SetVector(GlobalMembers.ShaderIDs.HitUV, brushUV);
+            _shaveMaterial.SetFloat(GlobalMembers.ShaderIDs.PaintValue, value);
+            _shaveMaterial.SetFloat(GlobalMembers.ShaderIDs.BrushSize, brushSize); 
             
-            shaveCanvas.Update();
+            _furCanvas.Update();
         }
 
         public void PaintColor(Vector2 uv, Color color, float brushSize)
         {
-            if (colorMaterial == null) return;
+            if (_colorMaterial == null) return;
 
             Vector4 brushUV = new Vector4(uv.x, uv.y, 0, 0);
-            colorMaterial.SetVector(GlobalMembers.ShaderIDs.HitUV, brushUV);
-            colorMaterial.SetColor(GlobalMembers.ShaderIDs.PaintColor, color);
-            colorMaterial.SetFloat(GlobalMembers.ShaderIDs.BrushSize, brushSize);
+            _colorMaterial.SetVector(GlobalMembers.ShaderIDs.HitUV, brushUV);
+            _colorMaterial.SetColor(GlobalMembers.ShaderIDs.PaintColor, color);
+            _colorMaterial.SetFloat(GlobalMembers.ShaderIDs.BrushSize, brushSize);
             
-            colorCanvas.Update();
+            _colorCanvas.Update();
         }
 
         public void StopAllPainting()
         {
             Vector4 offScreen = new Vector4(-1, -1, 0, 0);
             
-            if (shaveMaterial != null)
+            if (_shaveMaterial != null)
             {
-                shaveMaterial.SetVector(GlobalMembers.ShaderIDs.HitUV, offScreen);
-                shaveCanvas.Update();
+                _shaveMaterial.SetVector(GlobalMembers.ShaderIDs.HitUV, offScreen);
+                _furCanvas.Update();
             }
 
-            if (colorMaterial != null)
+            if (_colorMaterial != null)
             {
-                colorMaterial.SetVector(GlobalMembers.ShaderIDs.HitUV, offScreen);
-                colorCanvas.Update();
+                _colorMaterial.SetVector(GlobalMembers.ShaderIDs.HitUV, offScreen);
+                _colorCanvas.Update();
             }
         }
     }

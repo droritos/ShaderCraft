@@ -1,6 +1,7 @@
 using UnityEngine;
 using Manager;
 using Global_Data;
+using Statue;
 
 namespace Grooming
 {
@@ -9,21 +10,31 @@ namespace Grooming
         [Header("Dependencies")]
         [SerializeField] GroomingRaycaster raycaster;
         [SerializeField] CanvasPainter painter;
+        
+        [Header("VFX Dependencies")] 
+        [SerializeField] VFXManager vfxManager;
+        [SerializeField] CustomerModelController customerModelController;
 
         [Header("Tool Settings")]
-        [SerializeField] float brushSize = 0.1f; // Keep this matched with your CRT brush size!
+        [SerializeField] float brushSize = 0.1f; 
         [SerializeField] float cutSpeed = -0.05f;  
         [SerializeField] float growSpeed = 0.05f;  
         [SerializeField] Color currentColor = Color.red;
 
-        private ToolType currentTool;
+        private ToolType _currentTool;
+        private Texture2D _pixelReader; 
+
+        private void Start()
+        {
+            _pixelReader = new Texture2D(1, 1, TextureFormat.RGBA32, false);
+        }
 
         void OnEnable()
         {
             if (raycaster != null)
             {
                 raycaster.OnFurHit += HandleFurHit;
-                raycaster.OnFurHover += HandleFurHover; // Subscribe to hover
+                raycaster.OnFurHover += HandleFurHover; 
                 raycaster.OnInteractionStopped += HandleInteractionStopped;
             }
             if (ToolBoxManager.Instance != null) ToolBoxManager.Instance.OnToolSelected += ChangeTool;
@@ -35,24 +46,38 @@ namespace Grooming
             if (raycaster != null)
             {
                 raycaster.OnFurHit -= HandleFurHit;
-                raycaster.OnFurHover -= HandleFurHover; // Unsubscribe
+                raycaster.OnFurHover -= HandleFurHover; 
                 raycaster.OnInteractionStopped -= HandleInteractionStopped;
             }
             if (ToolBoxManager.Instance != null) ToolBoxManager.Instance.OnToolSelected -= ChangeTool;
             if (ToolBoxManager.Instance != null) ToolBoxManager.Instance.OnColorSelected -= SetSprayColor;
         }
-        private void HandleFurHit(Vector2 uv)
+
+        // UPDATED: Now accepts the 3D hitPoint!
+        private void HandleFurHit(Vector2 uv, Vector3 hitPoint)
         {
-            switch (currentTool)
+            switch (_currentTool)
             {
-                case ToolType.Shave: painter.PaintLength(uv, cutSpeed,brushSize); break;
-                case ToolType.Grow:  painter.PaintLength(uv, growSpeed,brushSize); break;
-                case ToolType.Color: painter.PaintColor(uv, currentColor,brushSize); break;
+                case ToolType.Shave: 
+                    painter.PaintLength(uv, cutSpeed, brushSize); 
+                    Color cutColor = GetColorFromCRT(uv); 
+                    vfxManager.PlayCutVFX(hitPoint, cutColor); // Spawn colored hair
+                    break;
+                
+                case ToolType.Grow:  
+                    painter.PaintLength(uv, growSpeed, brushSize); 
+                    vfxManager.PlayRegrowVFX(hitPoint); // Spawn magical sparkles
+                    break;
+                
+                case ToolType.Color: 
+                    painter.PaintColor(uv, currentColor, brushSize); 
+                    vfxManager.PlaySprayVFX(hitPoint); // Spawn spray paint burst
+                    break;
             }
         }
+
         private void HandleFurHover(Vector2 uv)
         {
-            // Instead of telling one material, we broadcast this globally!
             Shader.SetGlobalVector(GlobalMembers.ShaderIDs.HitUV, new Vector4(uv.x, uv.y, 0, 0));
             Shader.SetGlobalFloat(GlobalMembers.ShaderIDs.BrushSize, brushSize);
         }
@@ -60,17 +85,32 @@ namespace Grooming
         private void HandleInteractionStopped()
         {
             painter.StopAllPainting();
-            
-            // Move the global cursor off-screen so the ring disappears
             Shader.SetGlobalVector(GlobalMembers.ShaderIDs.HitUV, new Vector4(-1, -1, 0, 0));
         }
 
-        private void ChangeTool(ToolType newTool) { currentTool = newTool; }
+        private void ChangeTool(ToolType newTool) { _currentTool = newTool; }
         
         public void SetSprayColor(Color newColor)
         {
             currentColor = newColor;
             ChangeTool(ToolType.Color);
+        }
+
+        private Color GetColorFromCRT(Vector2 uv)
+        {
+            CustomRenderTexture playerColorCanvas = customerModelController.CustomerColorCanvas;
+            
+            int x = Mathf.Clamp(Mathf.FloorToInt(uv.x * playerColorCanvas.width), 0, playerColorCanvas.width - 1);
+            int y = Mathf.Clamp(Mathf.FloorToInt(uv.y * playerColorCanvas.height), 0, playerColorCanvas.height - 1);
+
+            RenderTexture previousActive = RenderTexture.active;
+            RenderTexture.active = playerColorCanvas;
+
+            _pixelReader.ReadPixels(new Rect(x, y, 1, 1), 0, 0);
+            _pixelReader.Apply();
+
+            RenderTexture.active = previousActive;
+            return _pixelReader.GetPixel(0, 0);
         }
     }
 }
