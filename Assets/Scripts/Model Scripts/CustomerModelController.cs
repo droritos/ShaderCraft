@@ -49,6 +49,26 @@ namespace Statue
             modelSlotTransfrom?.Rotate(Vector3.up, -rotationAmount);
         }
 
+        public void UpdateResolution(int newResolution)
+        {
+            // 1. Tell the GPU to let go of the texture first!
+            CustomerFurTexture.Release();
+            CustomerColorCanvas.Release();
+
+            // 2. Now we are allowed to change the size
+            CustomerFurTexture.width = newResolution;
+            CustomerFurTexture.height = newResolution;
+            CustomerColorCanvas.width = newResolution;
+            CustomerColorCanvas.height = newResolution;
+
+            // 3. Rebuild the texture and wipe it clean
+            CustomerFurTexture.Create();
+            CustomerColorCanvas.Create();
+
+            CustomerFurTexture.Initialize();
+            CustomerColorCanvas.Initialize();
+        }
+
         private void HandleModelEnable(bool enable)
         {
             modelSlotTransfrom.gameObject.SetActive(enable);

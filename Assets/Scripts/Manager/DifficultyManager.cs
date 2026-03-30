@@ -1,5 +1,6 @@
 using System;
 using Global_Data;
+using Statue;
 using UnityEngine;
 
 namespace Manager
@@ -7,8 +8,7 @@ namespace Manager
     public class DifficultyManager : MonoBehaviour
     {
         [Header("Render Textures")]
-        [SerializeField] CustomRenderTexture playerShaveCanvas;
-        [SerializeField] CustomRenderTexture playerColorCanvas;
+        [SerializeField] CustomerModelController _customerModelController;
 
         [Header("Answer Key Size")]
         [SerializeField] int targetResolution = 1024; // Your target images are 1024
@@ -25,6 +25,12 @@ namespace Manager
         private void OnDestroy()
         {
             EventManager.ButtonsOnClickEvent.ChangeDifficulty -= ChangeDifficulty;
+        }
+
+        private void OnValidate()
+        {
+            if(!_customerModelController)
+                _customerModelController = FindAnyObjectByType<CustomerModelController>();
         }
 
         private void ChangeDifficulty(DifficultyType difficulty)
@@ -52,23 +58,7 @@ namespace Manager
         }
         private void ChangeResolution(int newResolution)
         {
-            // 1. Tell the GPU to let go of the texture first!
-            playerShaveCanvas.Release();
-            playerColorCanvas.Release();
-
-            // 2. Now we are allowed to change the size
-            playerShaveCanvas.width = newResolution;
-            playerShaveCanvas.height = newResolution;
-            playerColorCanvas.width = newResolution;
-            playerColorCanvas.height = newResolution;
-
-            // 3. Rebuild the texture and wipe it clean
-            playerShaveCanvas.Create();
-            playerColorCanvas.Create();
-    
-            playerShaveCanvas.Initialize();
-            playerColorCanvas.Initialize();
-
+            _customerModelController.UpdateResolution(newResolution);
             // 4. Calculate the scale factor (e.g. 4096 / 1024 = 4)
             CurrentScaleFactor = targetResolution / newResolution;
 

@@ -29,13 +29,13 @@ namespace Manager
             fallingHairParticles.transform.position = hitPosition;
             var mainModule = fallingHairParticles.main;
             mainModule.startColor = hairColor;
-            fallingHairParticles.Emit(5); 
+            fallingHairParticles.Emit(2); 
         }
 
         public void PlayRegrowVFX(Vector3 hitPosition)
         {
             regrowthSparkleParticles.transform.position = hitPosition;
-            regrowthSparkleParticles.Emit(2); 
+            regrowthSparkleParticles.Emit(1); 
         }
 
         public void PlaySprayVFX(Vector3 hitPosition) 
@@ -45,7 +45,7 @@ namespace Manager
             var mainModule = sprayPaintBurstParticles.main;
             mainModule.startColor = currentSprayColor; 
 
-            sprayPaintBurstParticles.Emit(3); 
+            sprayPaintBurstParticles.Emit(1); 
         }
 
         private void ChangeSprayColor(Color color)

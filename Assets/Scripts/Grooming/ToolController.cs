@@ -13,7 +13,7 @@ namespace Grooming
         
         [Header("VFX Dependencies")] 
         [SerializeField] VFXManager vfxManager;
-        [SerializeField] CustomerModelController customerModelController;
+        [SerializeField] CustomerModelController _customerModelController;
 
         [Header("Tool Settings")]
         [SerializeField] float brushSize = 0.1f; 
@@ -22,8 +22,9 @@ namespace Grooming
         [SerializeField] Color currentColor = Color.red;
 
         private ToolType _currentTool;
-        private Texture2D _pixelReader; 
+        private Texture2D _pixelReader;
 
+        #region << Unity Functions >>
         private void Start()
         {
             _pixelReader = new Texture2D(1, 1, TextureFormat.RGBA32, false);
@@ -52,6 +53,12 @@ namespace Grooming
             if (ToolBoxManager.Instance != null) ToolBoxManager.Instance.OnToolSelected -= ChangeTool;
             if (ToolBoxManager.Instance != null) ToolBoxManager.Instance.OnColorSelected -= SetSprayColor;
         }
+        private void OnValidate()
+        {
+            if(!_customerModelController)
+                _customerModelController = FindAnyObjectByType<CustomerModelController>();
+        }
+        #endregion
 
         // UPDATED: Now accepts the 3D hitPoint!
         private void HandleFurHit(Vector2 uv, Vector3 hitPoint)
@@ -76,6 +83,19 @@ namespace Grooming
             }
         }
 
+
+        #region << Handle Tools >>
+        private void ChangeTool(ToolType newTool) { _currentTool = newTool; }
+        
+        private void SetSprayColor(Color newColor)
+        {
+            currentColor = newColor;
+            ChangeTool(ToolType.Color);
+        }
+        #endregion
+        
+        #region << Feedbacks >>
+        
         private void HandleFurHover(Vector2 uv)
         {
             Shader.SetGlobalVector(GlobalMembers.ShaderIDs.HitUV, new Vector4(uv.x, uv.y, 0, 0));
@@ -87,18 +107,11 @@ namespace Grooming
             painter.StopAllPainting();
             Shader.SetGlobalVector(GlobalMembers.ShaderIDs.HitUV, new Vector4(-1, -1, 0, 0));
         }
-
-        private void ChangeTool(ToolType newTool) { _currentTool = newTool; }
-        
-        public void SetSprayColor(Color newColor)
-        {
-            currentColor = newColor;
-            ChangeTool(ToolType.Color);
-        }
+        #endregion
 
         private Color GetColorFromCRT(Vector2 uv)
         {
-            CustomRenderTexture playerColorCanvas = customerModelController.CustomerColorCanvas;
+            CustomRenderTexture playerColorCanvas = _customerModelController.CustomerColorCanvas;
             
             int x = Mathf.Clamp(Mathf.FloorToInt(uv.x * playerColorCanvas.width), 0, playerColorCanvas.width - 1);
             int y = Mathf.Clamp(Mathf.FloorToInt(uv.y * playerColorCanvas.height), 0, playerColorCanvas.height - 1);
