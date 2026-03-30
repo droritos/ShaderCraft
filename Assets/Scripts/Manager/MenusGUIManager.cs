@@ -30,6 +30,7 @@ namespace Manager
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 optionPanel.SetActive(!optionPanel.activeSelf);
+                EventManager.PauseSystem.RaisePause(optionPanel.activeSelf);
             }
         }
     }

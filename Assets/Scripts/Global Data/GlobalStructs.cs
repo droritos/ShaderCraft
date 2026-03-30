@@ -3,6 +3,13 @@ using UnityEngine;
 
 namespace Global_Data
 {
+    [System.Serializable]
+    public struct ObjectiveTarget
+    {
+        public Texture2D targetFurTexture; 
+        public Texture2D targetColorTexture;
+    }
+    #region << No Relevant >>
     struct TriangleData
     {
         public Vector3 PositionOffset;
@@ -17,4 +24,9 @@ namespace Global_Data
         public Material material;
         public int triangleCount;
     }
+    
+
+  
+    #endregion
+    
 }

@@ -1,4 +1,5 @@
 using System;
+using Manager;
 using UnityEngine;
 
 namespace Grooming
@@ -9,10 +10,19 @@ namespace Grooming
 
         public event Action<Vector2> OnFurHit;     
         public event Action<Vector2> OnFurHover;   
-        public event Action OnInteractionStopped;  
+        public event Action OnInteractionStopped; 
+        
+        private bool _isPaused;
+
+        private void Start()
+        {
+            EventManager.PauseSystem.Pause += (state) => _isPaused = state;
+        }
 
         void Update()
         {
+            if(_isPaused) return;
+            
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             
             if (Physics.Raycast(ray, out RaycastHit hit, 100f))

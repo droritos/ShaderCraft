@@ -26,6 +26,8 @@ namespace GameGUI
 
         private void HandleDisplay(float matchValue)
         {
+            EventManager.PauseSystem.RaisePause(true);
+            
             _resultGUI.DisplayResults(matchValue);
             _resultGUI.gameObject.SetActive(true);
             _resultGUI.transform.DOScale(Vector3.one, popDuration).SetEase(Ease.OutBack);
@@ -33,6 +35,8 @@ namespace GameGUI
 
         public void HideDisplay()
         {
+            EventManager.PauseSystem.RaisePause(false);
+            
             _resultGUI.transform.DOScale(Vector3.zero, popDuration)
                 .SetEase(Ease.InBack)
                 .OnComplete(() => 

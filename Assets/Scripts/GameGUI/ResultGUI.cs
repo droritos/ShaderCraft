@@ -9,12 +9,12 @@ namespace GameGUI
     public class ResultGUI : MonoBehaviour
     {
         [Header("Star UI")]
-        [SerializeField] private List<Image> starImagesList; // Ensure exactly 3 images are in this list!
+        [SerializeField] private List<Image> starImagesList; 
         [SerializeField] private Sprite starFullSprite;
         [SerializeField] private Sprite starEmptySprite;
         
         [Header("Text UI")]
-        [SerializeField] TextMeshProUGUI matchValueText; // Fixed typo from 'matnes'
+        [SerializeField] TextMeshProUGUI matchValueText; 
         
         [Header("Buttons")]
         [SerializeField] Button ReplayButton;
@@ -24,17 +24,14 @@ namespace GameGUI
 
         private void Start()
         {
-            // Assuming these take no parameters, passing the method name directly is perfect!
             ReplayButton.onClick.AddListener(EventManager.ButtonsOnClickEvent.RaiseReplay);
             NextLevelButton.onClick.AddListener(EventManager.ButtonsOnClickEvent.RaiseNextLevel);
         }
 
-        // Renamed to be more descriptive. Call this method when the Finish button is clicked!
         public void DisplayResults(float matchValue) 
         {
             ChangeText(matchValue);
 
-            // 1. Determine how many stars they earned
             int starsEarned = 1; // Default to 1 star for trying!
             
             if (matchValue >= 90f) {

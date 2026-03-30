@@ -30,8 +30,12 @@ namespace Manager
             
             public static event UnityAction NextLevel;
             public static void RaiseNextLevel() => NextLevel?.Invoke();
-            
+        }
 
+        public static class PauseSystem
+        {
+            public static event UnityAction<bool> Pause;
+            public static void RaisePause(bool isPause) => Pause?.Invoke(isPause);
         }
     }
 }
