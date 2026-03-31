@@ -13,45 +13,57 @@ namespace Statue
         #endregion
         
         [Header("References")]
-        [SerializeField] private Transform modelSlotTransfrom; 
+        [SerializeField] private Transform modelSlotTransform; 
+        
+        [SerializeField] private InputReader inputReader;
  
-    
-        [Header("Settings")]
-        [SerializeField] float rotationSpeed = 150f;
-    
-        [Header("Members")]
-        //private Transform _modelTransfrom; // AKA the Head of the Hair that will do a haircut.
-        // AKA the Head of the Hair that will do a haircut.
-        // This is the "Member" you asked for
-        private RotationHandler _rotationHandler;
+        [Header("Rotation Settings")]
+        [SerializeField] private float rotationSpeed = 150f;
+        
+        [SerializeField] private float minVerticalTilt = -45f; 
+        [SerializeField] private float maxVerticalTilt = 45f;  
+
+        private float _currentYaw = 0f;   // Horizontal spin
+        private float _currentPitch = 0f; // Vertical tilt
 
         void Start()
         {
-            //Events Sub
             EventManager.ButtonsOnClickEvent.NextLevel += LoadTextures; 
-            EventManager.ButtonsOnClickEvent.Replay += LoadTextures; // Recreate / Reset
+            EventManager.ButtonsOnClickEvent.Replay += LoadTextures; 
             
-            EventManager.ScoreSystem.MatchValue += (float _) => HandleModelEnable(false); // when finish disable it
-            EventManager.ButtonsOnClickEvent.ChangeDifficulty += (DifficultyType _) => HandleModelEnable(true); // after selection enable it
+            EventManager.ScoreSystem.MatchValue += (float _) => HandleModelEnable(false); 
+            EventManager.ButtonsOnClickEvent.ChangeDifficulty += (DifficultyType _) => HandleModelEnable(true); 
             
-            HandleModelEnable(false); // make sure its false
-            
-            _rotationHandler = new RotationHandler(rotationSpeed);
+            HandleModelEnable(false); 
+
+            if (modelSlotTransform != null)
+            {
+                Vector3 startAngles = modelSlotTransform.localEulerAngles;
+                
+                _currentPitch = (startAngles.x > 180) ? startAngles.x - 360 : startAngles.x;
+                _currentYaw = startAngles.y;
+            }
         }
 
         private void OnDestroy()
         {
             EventManager.ButtonsOnClickEvent.NextLevel -= LoadTextures; 
-            EventManager.ButtonsOnClickEvent.Replay -= LoadTextures; // Recreate / Reset
+            EventManager.ButtonsOnClickEvent.Replay -= LoadTextures; 
         }
 
         void Update()
         {
-            float input = Input.GetAxis("Horizontal"); // Only Keyboard 'A' , 'D'
+            if (inputReader == null || modelSlotTransform == null) return;
 
-            float rotationAmount = _rotationHandler.CalculateRotation(input, Time.deltaTime);
+            Vector2 input = inputReader.RotationInput; 
 
-            modelSlotTransfrom?.Rotate(Vector3.up, -rotationAmount);
+            _currentYaw -= input.x * rotationSpeed * Time.deltaTime; 
+            
+            _currentPitch += input.y * rotationSpeed * Time.deltaTime;
+
+            _currentPitch = Mathf.Clamp(_currentPitch, minVerticalTilt, maxVerticalTilt);
+
+            modelSlotTransform.localRotation = Quaternion.Euler(_currentPitch, _currentYaw, 0f);
         }
 
         public void LoadTextures()
@@ -67,6 +79,7 @@ namespace Statue
 
             HandleModelEnable(true);
         }
+
         public void UpdateResolution(int newResolution)
         {
             // 1. Tell the GPU to let go of the texture first!
@@ -89,7 +102,10 @@ namespace Statue
 
         private void HandleModelEnable(bool enable)
         {
-            modelSlotTransfrom.gameObject.SetActive(enable);
+            if (modelSlotTransform != null)
+            {
+                modelSlotTransform.gameObject.SetActive(enable);
+            }
         }
     }
 }

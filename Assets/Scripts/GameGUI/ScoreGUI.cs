@@ -37,7 +37,7 @@ namespace GameGUI
             _resultGUI.transform.DOScale(Vector3.one, popDuration).SetEase(Ease.OutBack);
         }
 
-        public void HideDisplay()
+        private void HideDisplay()
         {
             EventManager.PauseSystem.RaisePause(false);
             

@@ -15555,6 +15555,7 @@ GameObject:
   - component: {fileID: 1637776499}
   - component: {fileID: 1637776498}
   - component: {fileID: 1637776500}
+  - component: {fileID: 1637776501}
   m_Layer: 0
   m_Name: Models Owner
   m_TagString: Untagged
@@ -15576,8 +15577,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Statue.ModelController
   <CustomerFurTexture>k__BackingField: {fileID: 8600000, guid: 210e5e114f12abc4d8533d7e49547de7, type: 2}
   <CustomerColorCanvas>k__BackingField: {fileID: 8600000, guid: 419f257402211684786fc1b495783e3b, type: 2}
-  modelSlotTransfrom: {fileID: 1281531086}
+  modelSlotTransform: {fileID: 1281531086}
+  inputReader: {fileID: 1637776501}
   rotationSpeed: 150
+  minVerticalTilt: -80
+  maxVerticalTilt: 80
 --- !u!4 &1637776499
 Transform:
   m_ObjectHideFlags: 0
@@ -15614,6 +15618,18 @@ MonoBehaviour:
     targetColorTexture: {fileID: 2800000, guid: 248ddab270c4b72449e273c00b5b30e6, type: 3}
   - targetFurTexture: {fileID: 2800000, guid: 8e06c7444b412fe4c86f44c44fb78922, type: 3}
     targetColorTexture: {fileID: 2800000, guid: 2e6a47abb1a35ca46a193a4752bc5520, type: 3}
+--- !u!114 &1637776501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637776497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc285f7ab69c6cb4b83cc740481e8ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Manager.InputReader
 --- !u!1 &1662298867
 GameObject:
   m_ObjectHideFlags: 0
