@@ -14,6 +14,7 @@ namespace GameGUI
         void Start()
         {
             EventManager.ScoreSystem.MatchValue += HandleDisplay;
+            EventManager.ButtonsOnClickEvent.NextLevel += HideDisplay;
 
             _resultGUI.transform.localScale = Vector3.zero;
             _resultGUI.gameObject.SetActive(false);
@@ -22,6 +23,8 @@ namespace GameGUI
         private void OnDestroy()
         {
             EventManager.ScoreSystem.MatchValue -= HandleDisplay;
+            EventManager.ButtonsOnClickEvent.NextLevel -= HideDisplay;
+            
         }
 
         private void HandleDisplay(float matchValue)

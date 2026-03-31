@@ -64,6 +64,8 @@ namespace Statue
 
             CustomerFurTexture.Initialize();
             CustomerColorCanvas.Initialize();
+
+            HandleModelEnable(true);
         }
         public void UpdateResolution(int newResolution)
         {

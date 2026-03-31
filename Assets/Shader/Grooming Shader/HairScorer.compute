@@ -1,14 +1,12 @@
 #pragma kernel ScoreHair
 
-// The Length Maps
 Texture2D<float4> PlayerCanvas;
 Texture2D<float4> TargetCanvas;
-
-// The Color Maps
 Texture2D<float4> PlayerColorCanvas;
 Texture2D<float4> TargetColorCanvas;
 
-RWStructuredBuffer<int> ResultBuffer;
+// Storing 2 numbers: [0] = Matches, [1] = Total Valid Pixels
+RWStructuredBuffer<int> ResultBuffer; 
 
 float Tolerance; 
 uint Resolution;
@@ -19,18 +17,21 @@ void ScoreHair (uint3 id : SV_DispatchThreadID)
 {
     if (id.x >= Resolution || id.y >= Resolution) return;
 
-    float playerLength = PlayerCanvas[id.xy].r;
-    
-    // NEW: Multiply the Target's XY by the Scale Factor!
-    float targetLength = TargetCanvas[id.xy * ScaleFactor].r; 
+    // 1. Grab the target's alpha channel. 
+    float targetAlpha = TargetCanvas[id.xy * ScaleFactor].a;
+    if (targetAlpha < 0.1) return; 
 
+    // 2. We found a valid piece of fur! Add it to our "Total" counter (Index 1)
+    InterlockedAdd(ResultBuffer[1], 1);
+
+    float playerLength = PlayerCanvas[id.xy].r;
+    float targetLength = TargetCanvas[id.xy * ScaleFactor].r; 
     float3 playerColor = PlayerColorCanvas[id.xy].rgb;
-    
-    // NEW: Multiply the Target's XY by the Scale Factor!
     float3 targetColor = TargetColorCanvas[id.xy * ScaleFactor].rgb;
 
     float lengthDiff = abs(playerLength - targetLength);
     
+    // 3. Score the hair normally (Index 0)
     if (lengthDiff <= Tolerance)
     {
         if (targetLength < 0.1)
@@ -39,7 +40,6 @@ void ScoreHair (uint3 id : SV_DispatchThreadID)
         }
         else
         {
-            // 0.3 to give the player a tiny bit of wiggle room for blended edges.
             float colorDiff = distance(playerColor, targetColor);
             if (colorDiff <= 0.3)
             {

@@ -15,7 +15,7 @@ namespace Manager
         [SerializeField] ComputeShader scoreShader;
 
         private CustomRenderTexture _customerFurTexture => customerModelController.CustomerFurTexture;
-        private Texture2D _targetTexture => modelTarget.CurrentObjectiveTarget.targetColorTexture;
+        private Texture2D _targetTexture => modelTarget.CurrentObjectiveTarget.targetFurTexture;
         private CustomRenderTexture _playerColorCanvas => customerModelController.CustomerColorCanvas;
         private Texture2D _targetColorTexture => modelTarget.CurrentObjectiveTarget.targetColorTexture;
         
