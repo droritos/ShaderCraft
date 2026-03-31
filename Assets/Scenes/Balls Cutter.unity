@@ -14980,6 +14980,8 @@ MonoBehaviour:
   _objectiveTargets:
   - targetFurTexture: {fileID: 2800000, guid: 40b001d6726f68b40a4512ae23370dac, type: 3}
     targetColorTexture: {fileID: 2800000, guid: 5f5c3199324becc4eb44ff36f5580206, type: 3}
+  - targetFurTexture: {fileID: 2800000, guid: da1cebd63f9c904488f7b040586a65d1, type: 3}
+    targetColorTexture: {fileID: 2800000, guid: 822234796bea33244a500e661d86b6de, type: 3}
 --- !u!1 &1662298867
 GameObject:
   m_ObjectHideFlags: 0
