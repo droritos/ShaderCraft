@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Global_Data;
+using Grooming;
 using Manager;
 using UnityEngine;
 
@@ -11,8 +12,8 @@ namespace Model_Scripts
         public ObjectiveTarget CurrentObjectiveTarget { get; private set; }
         
         [Header("Model Target References")]
-        [SerializeField] private Material _targetMaterial;
         [SerializeField] private Renderer modelRenderer;
+        [SerializeField] private FurShellGenerator targetFurGenerator;
         
         [Header("Level List")]
         [SerializeField] private List<ObjectiveTarget> _objectiveTargets;
@@ -21,7 +22,7 @@ namespace Model_Scripts
 
         private void Start()
         {
-            //Event Sub
+            // Event Sub
             EventManager.ButtonsOnClickEvent.NextLevel += LoadNextObjectiveTarget;
             
             if (_objectiveTargets != null && _objectiveTargets.Count > 0)
@@ -37,23 +38,11 @@ namespace Model_Scripts
 
         public void ChangeObjectiveTarget(ObjectiveTarget newTarget) 
         {
-            if (_targetMaterial != null)
-            {
-                CurrentObjectiveTarget = newTarget;
-
-                _targetMaterial.SetTexture(GlobalMembers.ShaderIDs.ShaveMask, newTarget.targetFurTexture);
-        
-                _targetMaterial.SetTexture(GlobalMembers.ShaderIDs.ColorMap, newTarget.targetColorTexture);
-                
-                if (modelRenderer != null)
-                {
-                    modelRenderer.material = _targetMaterial; 
-                }
-
-            }
+            CurrentObjectiveTarget = newTarget;
+            UpdateMaterialTarget(newTarget);
         }
 
-        public void LoadNextObjectiveTarget() 
+        private void LoadNextObjectiveTarget() 
         {
             if (_objectiveTargets != null && _objectiveTargets.Count > 0)
             {
@@ -66,7 +55,22 @@ namespace Model_Scripts
 
                 ChangeObjectiveTarget(_objectiveTargets[_currentTargetIndex]);
             }
+            modelRenderer.gameObject.SetActive(true);
         }
         
+        private void UpdateMaterialTarget(ObjectiveTarget newTarget)
+        {
+            if (modelRenderer != null) 
+            {
+                Material currentInstanceMat = modelRenderer.material;
+                currentInstanceMat.SetTexture(GlobalMembers.ShaderIDs.ShaveMask, newTarget.targetFurTexture);
+                currentInstanceMat.SetTexture(GlobalMembers.ShaderIDs.ColorMap, newTarget.targetColorTexture);
+            }
+
+            if (targetFurGenerator != null)
+            {
+                targetFurGenerator.UpdateAllShellTextures(newTarget.targetFurTexture, newTarget.targetColorTexture);
+            }
+        }
     }
 }

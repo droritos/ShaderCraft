@@ -12,7 +12,7 @@ namespace Manager
         
         private Color currentSprayColor = Color.white; // Default to white just in case!
 
-        private void Start()
+        private void Awake()
         {
             if (ToolBoxManager.Instance != null)
                 ToolBoxManager.Instance.OnColorSelected += ChangeSprayColor;

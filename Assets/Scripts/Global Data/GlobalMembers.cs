@@ -12,6 +12,7 @@ namespace Global_Data
             public static readonly int PaintColor = Shader.PropertyToID("_PaintColor");
             public static readonly int ShellHeight = Shader.PropertyToID("_ShellHeight");
             public static readonly int BrushSize = Shader.PropertyToID("_BrushSize");
+            public static readonly int MaxFurLength = Shader.PropertyToID("_MaxFurLength");
             
             public static readonly int PlayerCanvas = Shader.PropertyToID("PlayerCanvas");
             public static readonly int TargetCanvas = Shader.PropertyToID("TargetCanvas");

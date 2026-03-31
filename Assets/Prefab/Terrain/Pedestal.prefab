@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8970245171448439116}
   - component: {fileID: 7903997173172490949}
   - component: {fileID: 6734441901625201497}
-  - component: {fileID: 8224741991092549304}
+  - component: {fileID: 8085423078564609286}
   m_Layer: 0
   m_Name: Pedestal (1)
   m_TagString: Untagged
@@ -124,8 +124,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8224741991092549304
-CapsuleCollider:
+--- !u!64 &8085423078564609286
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -142,11 +142,10 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &3389901985688277467
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +286,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -317,14 +316,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4892503726532426999}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 2.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1259056150627742479}
+  - {fileID: 4972297694498170201}
   m_Father: {fileID: 2280443371000558948}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &6742473929269509664
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,13 +431,13 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!1001 &4027814306589670366
+--- !u!1001 &7178066317182905736
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -495,8 +494,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70c81dcec1e38ae42b3185d9a9e91b95, type: 3}
---- !u!4 &1259056150627742479 stripped
+--- !u!4 &4972297694498170201 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2782304417933461713, guid: 70c81dcec1e38ae42b3185d9a9e91b95, type: 3}
-  m_PrefabInstance: {fileID: 4027814306589670366}
+  m_PrefabInstance: {fileID: 7178066317182905736}
   m_PrefabAsset: {fileID: 0}

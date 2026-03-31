@@ -7,25 +7,22 @@ namespace Manager
 {
     public class ToolBoxManager : MonoSingleton<ToolBoxManager>
     {
-        // These match the requirements in your brief
         public event UnityAction<ToolType> OnToolSelected;
         public event UnityAction<Color> OnColorSelected;
 
-        [Header("Current Settings")]
-        public ToolType activeTool;
-        public Color activeColor = Color.red; // Default starting color
-
-        // This will be called by your UI Buttons
+        private ToolType _activeTool;
+        private Color _activeColor;
+        
         private void Start()
         {
             SetTool(0); 
-            SetColor(0);
+            SetColor(-1);
         }
 
         public void SetTool(int toolIndex)
         {
-            activeTool = (ToolType)toolIndex;
-            OnToolSelected?.Invoke(activeTool);
+            _activeTool = (ToolType)toolIndex;
+            OnToolSelected?.Invoke(_activeTool);
             //Debug.Log("Active Tool: " + activeTool);
         }
 
@@ -35,27 +32,29 @@ namespace Manager
             switch (colorType)
             {
                 case ColorType.Red:
-                    activeColor = Color.red;
+                    _activeColor = Color.red;
                     break;
                 case ColorType.Blue:
-                    activeColor = Color.cyan;
+                    _activeColor = Color.cyan;
                     break;
                 case ColorType.Green:
-                    activeColor = Color.green;
+                    _activeColor = Color.green;
                     break;
                 case ColorType.Yellow:
-                    activeColor = Color.yellow;
+                    _activeColor = Color.yellow;
                     break;
                 case ColorType.Purple:
-                    activeColor = Color.magenta;
+                    _activeColor = Color.magenta;
                     break;
                 case ColorType.Pink:
-                    activeColor = Color.pink;
+                    _activeColor = Color.pink;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    _activeColor = Color.white;
+                    break;
+
             }
-            OnColorSelected?.Invoke(activeColor);
+            OnColorSelected?.Invoke(_activeColor);
             //Debug.Log("Active Color: " + colorType);
         }
     }
