@@ -22,6 +22,9 @@ namespace Global_Data
             public static readonly int Tolerance = Shader.PropertyToID("Tolerance");
             public static readonly int Resolution = Shader.PropertyToID("Resolution");
             public static readonly int ScaleFactor = Shader.PropertyToID("ScaleFactor");
+            
+            public static readonly int ShaveMask = Shader.PropertyToID("_ShaveMask");
+            public static readonly int ColorMap = Shader.PropertyToID("_ColorMap");
         }
     }
 }

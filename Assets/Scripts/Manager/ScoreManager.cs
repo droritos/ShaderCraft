@@ -1,24 +1,24 @@
 using System;
 using Global_Data;
+using Model_Scripts;
+using Statue;
 using UnityEngine;
 
 namespace Manager
 {
     public class ScoreManager : MonoBehaviour
     {
-        [Header("References")] [SerializeField]
-        ComputeShader scoreShader;
+        
+        [Header("References")] 
+        [SerializeField] ModelTarget modelTarget;
+        [SerializeField] CustomerModelController  customerModelController;
+        [SerializeField] ComputeShader scoreShader;
 
-        [Header("Length Maps")] [SerializeField]
-        CustomRenderTexture playerCanvas;
-
-        [SerializeField] Texture2D targetTexture;
-
-        [Header("Color Maps")] [SerializeField]
-        CustomRenderTexture playerColorCanvas;
-
-        [SerializeField] Texture2D targetColorTexture;
-
+        private CustomRenderTexture _customerFurTexture => customerModelController.CustomerFurTexture;
+        private Texture2D _targetTexture => modelTarget.CurrentObjectiveTarget.targetColorTexture;
+        private CustomRenderTexture _playerColorCanvas => customerModelController.CustomerColorCanvas;
+        private Texture2D _targetColorTexture => modelTarget.CurrentObjectiveTarget.targetColorTexture;
+        
         private const string ScoreHair = "ScoreHair";
 
       
@@ -27,7 +27,7 @@ namespace Manager
         {
             if (!AreReferencesValid()) return;
 
-            int resolution = playerCanvas.width;
+            int resolution = _customerFurTexture.width;
 
             // 1. Let the GPU do the heavy lifting safely
             int matchingPixels = ExecuteScoreComputeShader(resolution);
@@ -43,8 +43,8 @@ namespace Manager
 
         private bool AreReferencesValid()
         {
-            if (scoreShader == null || playerCanvas == null || targetTexture == null ||
-                playerColorCanvas == null || targetColorTexture == null)
+            if (scoreShader == null || _customerFurTexture == null || _targetTexture == null ||
+                _playerColorCanvas == null || _targetColorTexture == null)
             {
                 Debug.LogError("ScoreManager: Missing a texture or shader reference!");
                 return false;
@@ -69,10 +69,10 @@ namespace Manager
                 int kernelID = scoreShader.FindKernel(ScoreHair);
 
                 // Hand to GPU using the fast Hashes
-                scoreShader.SetTexture(kernelID, GlobalMembers.ShaderIDs.PlayerCanvas, playerCanvas);
-                scoreShader.SetTexture(kernelID, GlobalMembers.ShaderIDs.TargetCanvas, targetTexture);
-                scoreShader.SetTexture(kernelID, GlobalMembers.ShaderIDs.PlayerColorCanvas, playerColorCanvas);
-                scoreShader.SetTexture(kernelID, GlobalMembers.ShaderIDs.TargetColorCanvas, targetColorTexture);
+                scoreShader.SetTexture(kernelID, GlobalMembers.ShaderIDs.PlayerCanvas, _customerFurTexture);
+                scoreShader.SetTexture(kernelID, GlobalMembers.ShaderIDs.TargetCanvas, _targetTexture);
+                scoreShader.SetTexture(kernelID, GlobalMembers.ShaderIDs.PlayerColorCanvas, _playerColorCanvas);
+                scoreShader.SetTexture(kernelID, GlobalMembers.ShaderIDs.TargetColorCanvas, _targetColorTexture);
 
                 scoreShader.SetBuffer(kernelID, GlobalMembers.ShaderIDs.ResultBuffer, resultBuffer);
                 scoreShader.SetFloat(GlobalMembers.ShaderIDs.Tolerance, DifficultyManager.CurrentTolerance);

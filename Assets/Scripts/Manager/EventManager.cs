@@ -29,7 +29,7 @@ namespace Manager
             public static event UnityAction Replay;
             public static void RaiseReplay() => Replay?.Invoke();
             
-            public static event UnityAction NextLevel;
+            public static event UnityAction NextLevel; // Load Target Textures By Level 
             public static void RaiseNextLevel() => NextLevel?.Invoke();
         }
 

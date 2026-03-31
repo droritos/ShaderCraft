@@ -55,6 +55,8 @@ namespace Manager
                 default:
                     throw new ArgumentOutOfRangeException(nameof(difficulty), difficulty, null);
             }
+
+            EventManager.ButtonsOnClickEvent.RaiseNextLevel(); // Invoke Level So GUI of target also be updated
         }
         private void ChangeResolution(int newResolution)
         {

@@ -1,3 +1,4 @@
+using System;
 using Global_Data;
 using Manager;
 using UnityEngine;
@@ -26,29 +27,44 @@ namespace Statue
 
         void Start()
         {
-            HandleModelEnable(false); // make sure its false
+            //Events Sub
+            EventManager.ButtonsOnClickEvent.NextLevel += LoadTextures; 
+            EventManager.ButtonsOnClickEvent.Replay += LoadTextures; // Recreate / Reset
+            
             EventManager.ScoreSystem.MatchValue += (float _) => HandleModelEnable(false); // when finish disable it
             EventManager.ButtonsOnClickEvent.ChangeDifficulty += (DifficultyType _) => HandleModelEnable(true); // after selection enable it
             
-            // We "Initialize" our pure C# class here
-            _rotationHandler = new RotationHandler(rotationSpeed);
+            HandleModelEnable(false); // make sure its false
             
-        
-            //_modelTransfrom = _modelTransfrom.transform; // The child is the Model/State/Head
+            _rotationHandler = new RotationHandler(rotationSpeed);
         }
-        
+
+        private void OnDestroy()
+        {
+            EventManager.ButtonsOnClickEvent.NextLevel -= LoadTextures; 
+            EventManager.ButtonsOnClickEvent.Replay -= LoadTextures; // Recreate / Reset
+        }
+
         void Update()
         {
-            // 1. Get Input
             float input = Input.GetAxis("Horizontal"); // Only Keyboard 'A' , 'D'
 
-            // 2. Ask the Handler to do the math
             float rotationAmount = _rotationHandler.CalculateRotation(input, Time.deltaTime);
 
-            // 3. Apply the result to the Transform
             modelSlotTransfrom?.Rotate(Vector3.up, -rotationAmount);
         }
 
+        public void LoadTextures()
+        {
+            CustomerFurTexture.Release();
+            CustomerColorCanvas.Release();
+
+            CustomerFurTexture.Create();
+            CustomerColorCanvas.Create();
+
+            CustomerFurTexture.Initialize();
+            CustomerColorCanvas.Initialize();
+        }
         public void UpdateResolution(int newResolution)
         {
             // 1. Tell the GPU to let go of the texture first!
