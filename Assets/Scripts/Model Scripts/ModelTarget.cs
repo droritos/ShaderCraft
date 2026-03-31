@@ -44,7 +44,7 @@ namespace Model_Scripts
 
         private void LoadNextObjectiveTarget() 
         {
-            if (_objectiveTargets != null && _objectiveTargets.Count > 0)
+            if (_objectiveTargets is { Count: > 0 })
             {
                 _currentTargetIndex++; 
 
@@ -56,6 +56,7 @@ namespace Model_Scripts
                 ChangeObjectiveTarget(_objectiveTargets[_currentTargetIndex]);
             }
             modelRenderer.gameObject.SetActive(true);
+            Debug.Log("Model Target Loaded");
         }
         
         private void UpdateMaterialTarget(ObjectiveTarget newTarget)
