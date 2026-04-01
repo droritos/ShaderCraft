@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using Global_Data;
 using Grooming;
 using Manager;
@@ -29,6 +30,8 @@ namespace Model_Scripts
             {
                 _currentTargetIndex = 0; 
             }
+
+            RotateAnimation();
         }
 
         private void OnDestroy()
@@ -72,6 +75,16 @@ namespace Model_Scripts
             {
                 targetFurGenerator.UpdateAllShellTextures(newTarget.targetFurTexture, newTarget.targetColorTexture);
             }
+        }
+
+        private void RotateAnimation()
+        {
+            modelRenderer.transform.DOKill();
+
+            modelRenderer.transform.DORotate(new Vector3(0f, 360f, 0f), 10f, RotateMode.FastBeyond360)
+                .SetEase(Ease.Linear)       
+                .SetLoops(-1, LoopType.Restart) 
+                .SetRelative(true);        
         }
     }
 }

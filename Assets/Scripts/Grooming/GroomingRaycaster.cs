@@ -6,11 +6,14 @@ namespace Grooming
 {
     public class GroomingRaycaster : MonoBehaviour
     {
-        [SerializeField] Camera mainCamera;
-
         public event Action<Vector2, Vector3> OnFurHit;
         public event Action<Vector2> OnFurHover;   
         public event Action OnInteractionStopped; 
+        
+        [SerializeField] Camera mainCamera;
+        
+        [Header("Settings")]
+        [SerializeField] private LayerMask groomableLayer;
         
         private bool _isPaused;
 
@@ -25,27 +28,20 @@ namespace Grooming
             
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             
-            if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+            if (Physics.Raycast(ray, out RaycastHit hit, 100f, groomableLayer))
             {
-                // 1. Hide the Windows cursor so the player focuses on the 3D ring
                 Cursor.visible = false;
-
                 OnFurHover?.Invoke(hit.textureCoord);
 
                 if (Input.GetMouseButton(0))
                 {
                     OnFurHit?.Invoke(hit.textureCoord,hit.point);
                 }
-                
-                //Debug.Log("Cursor should be not visible");
             }
             else
             {
-                // 2. We missed the fur, bring the Windows cursor back!
                 Cursor.visible = true;
                 OnInteractionStopped?.Invoke();
-                //Debug.Log("Cursor need to be visible");
-                
             }
         }
 
@@ -54,7 +50,6 @@ namespace Grooming
             if (!mainCamera) mainCamera = Camera.main;
         }
         
-        // Make sure the cursor always comes back if the object is destroyed
         private void OnDisable()
         {
             Cursor.visible = true;

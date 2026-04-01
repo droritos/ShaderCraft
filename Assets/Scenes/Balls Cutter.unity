@@ -4978,7 +4978,7 @@ GameObject:
   - component: {fileID: 74889716}
   - component: {fileID: 74889718}
   - component: {fileID: 74889717}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5284,7 +5284,7 @@ GameObject:
   - component: {fileID: 182635463}
   - component: {fileID: 182635465}
   - component: {fileID: 182635464}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5588,7 +5588,7 @@ GameObject:
   - component: {fileID: 233783281}
   - component: {fileID: 233783283}
   - component: {fileID: 233783282}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5677,7 +5677,7 @@ GameObject:
   - component: {fileID: 285393356}
   - component: {fileID: 285393358}
   - component: {fileID: 285393357}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5934,7 +5934,7 @@ GameObject:
   - component: {fileID: 396962685}
   - component: {fileID: 396962687}
   - component: {fileID: 396962686}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6023,7 +6023,7 @@ GameObject:
   - component: {fileID: 411015830}
   - component: {fileID: 411015832}
   - component: {fileID: 411015831}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6263,7 +6263,7 @@ GameObject:
   - component: {fileID: 460789971}
   - component: {fileID: 460789973}
   - component: {fileID: 460789972}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6352,7 +6352,7 @@ GameObject:
   - component: {fileID: 482743775}
   - component: {fileID: 482743777}
   - component: {fileID: 482743776}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6441,7 +6441,7 @@ GameObject:
   - component: {fileID: 502487213}
   - component: {fileID: 502487215}
   - component: {fileID: 502487214}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6882,6 +6882,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4892503726532426999, guid: 1d5ebcf66c3ac5a438551f840aaf27c3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4892503726532426999, guid: 1d5ebcf66c3ac5a438551f840aaf27c3, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -6892,6 +6896,10 @@ PrefabInstance:
     - target: {fileID: 6742473929269509664, guid: 1d5ebcf66c3ac5a438551f840aaf27c3, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758854433771764257, guid: 1d5ebcf66c3ac5a438551f840aaf27c3, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7379800280647946219, guid: 1d5ebcf66c3ac5a438551f840aaf27c3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7020,7 +7028,7 @@ GameObject:
   - component: {fileID: 595537773}
   - component: {fileID: 595537775}
   - component: {fileID: 595537774}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7198,7 +7206,7 @@ GameObject:
   - component: {fileID: 611630674}
   - component: {fileID: 611630676}
   - component: {fileID: 611630675}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7287,7 +7295,7 @@ GameObject:
   - component: {fileID: 666088939}
   - component: {fileID: 666088941}
   - component: {fileID: 666088940}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7808,7 +7816,7 @@ GameObject:
   - component: {fileID: 780921076}
   - component: {fileID: 780921078}
   - component: {fileID: 780921077}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7897,7 +7905,7 @@ GameObject:
   - component: {fileID: 788658959}
   - component: {fileID: 788658961}
   - component: {fileID: 788658960}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8075,7 +8083,7 @@ GameObject:
   - component: {fileID: 865462671}
   - component: {fileID: 865462673}
   - component: {fileID: 865462672}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8301,7 +8309,7 @@ GameObject:
   - component: {fileID: 951188169}
   - component: {fileID: 951188171}
   - component: {fileID: 951188170}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9306,7 +9314,7 @@ GameObject:
   - component: {fileID: 1005434035}
   - component: {fileID: 1005434037}
   - component: {fileID: 1005434036}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9746,7 +9754,7 @@ GameObject:
   - component: {fileID: 1271818058}
   - component: {fileID: 1271818060}
   - component: {fileID: 1271818059}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14821,7 +14829,7 @@ GameObject:
   - component: {fileID: 1335865296}
   - component: {fileID: 1335865298}
   - component: {fileID: 1335865297}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14910,7 +14918,7 @@ GameObject:
   - component: {fileID: 1368928908}
   - component: {fileID: 1368928910}
   - component: {fileID: 1368928909}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14999,7 +15007,7 @@ GameObject:
   - component: {fileID: 1414451067}
   - component: {fileID: 1414451069}
   - component: {fileID: 1414451068}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15088,7 +15096,7 @@ GameObject:
   - component: {fileID: 1508289878}
   - component: {fileID: 1508289880}
   - component: {fileID: 1508289879}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15177,7 +15185,7 @@ GameObject:
   - component: {fileID: 1531159955}
   - component: {fileID: 1531159957}
   - component: {fileID: 1531159956}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15355,7 +15363,7 @@ GameObject:
   - component: {fileID: 1575052130}
   - component: {fileID: 1575052132}
   - component: {fileID: 1575052131}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20722,7 +20730,7 @@ GameObject:
   - component: {fileID: 1747613778}
   - component: {fileID: 1747613780}
   - component: {fileID: 1747613779}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20811,7 +20819,7 @@ GameObject:
   - component: {fileID: 1755494278}
   - component: {fileID: 1755494280}
   - component: {fileID: 1755494279}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20989,7 +20997,7 @@ GameObject:
   - component: {fileID: 1791670080}
   - component: {fileID: 1791670082}
   - component: {fileID: 1791670081}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21078,7 +21086,7 @@ GameObject:
   - component: {fileID: 1791701018}
   - component: {fileID: 1791701020}
   - component: {fileID: 1791701019}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21345,7 +21353,7 @@ GameObject:
   - component: {fileID: 1820462742}
   - component: {fileID: 1820462744}
   - component: {fileID: 1820462743}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21701,7 +21709,7 @@ GameObject:
   - component: {fileID: 1902679872}
   - component: {fileID: 1902679874}
   - component: {fileID: 1902679873}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21879,7 +21887,7 @@ GameObject:
   - component: {fileID: 1958183786}
   - component: {fileID: 1958183788}
   - component: {fileID: 1958183787}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22266,7 +22274,7 @@ GameObject:
   - component: {fileID: 2040498348}
   - component: {fileID: 2040498350}
   - component: {fileID: 2040498349}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FurShell_Layer_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23217,6 +23225,10 @@ PrefabInstance:
       propertyPath: '_preBakedRenderers.Array.data[31]'
       value: 
       objectReference: {fileID: 1747613779}
+    - target: {fileID: 6788386162714398010, guid: 32de6d5dd571de247b893d779826f915, type: 3}
+      propertyPath: groomableLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 7059070470892216986, guid: 32de6d5dd571de247b893d779826f915, type: 3}
       propertyPath: vfxManager
       value: 
