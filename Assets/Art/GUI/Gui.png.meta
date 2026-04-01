@@ -263,6 +263,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: GUI_Menus Button
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 1268
+        width: 550
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91e52cfb4f8155340afb1e5f71c84ecc
+      internalID: 1359146030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -280,6 +302,7 @@ TextureImporter:
       GUI_Button purple: -1179813016
       GUI_Button yELLOW: 364711746
       GUI_ButtongRAY: 70397358
+      GUI_Menus Button: 1359146030
       GUI_Scissiers: 749436287
       Gui_Color: -216101939
       Gui_Dye: 1375076532

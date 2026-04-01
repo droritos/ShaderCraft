@@ -2,31 +2,51 @@ using System;
 using Global_Data;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Manager
 {
     public class ToolBoxManager : MonoSingleton<ToolBoxManager>
     {
-        // These match the requirements in your brief
         public event UnityAction<ToolType> OnToolSelected;
         public event UnityAction<Color> OnColorSelected;
+        
+        [Header("Tools Buttons")]
+        [SerializeField] private Button cutButton;
+        [SerializeField] private Button growButton;
+        [SerializeField] private Button paintButton;
 
-        [Header("Current Settings")]
-        public ToolType activeTool;
-        public Color activeColor = Color.red; // Default starting color
+        [Header("UI Settings")]
+        [SerializeField] private Color defaultButtonColor = Color.purple;
+        [SerializeField] private Color selectedButtonColor = Color.yellow;
 
-        // This will be called by your UI Buttons
+        private ToolType _activeTool;
+        private Color _activeColor;
+        
         private void Start()
         {
-            SetTool(0); 
-            SetColor(0);
+            cutButton.onClick.AddListener(() => SetTool(0, cutButton));
+            growButton.onClick.AddListener(() => SetTool(1, growButton));
+            paintButton.onClick.AddListener(() => SetTool(2, paintButton));
+            
+            // First Invoke - Set cut tool as default
+            SetTool(0, cutButton); 
+            SetColor(-1);
         }
 
-        public void SetTool(int toolIndex)
+        public void SetTool(int toolIndex, Button clickedButton) 
         {
-            activeTool = (ToolType)toolIndex;
-            OnToolSelected?.Invoke(activeTool);
-            //Debug.Log("Active Tool: " + activeTool);
+            _activeTool = (ToolType)toolIndex;
+            OnToolSelected?.Invoke(_activeTool);
+            
+            cutButton.image.color = defaultButtonColor;
+            growButton.image.color = defaultButtonColor;
+            paintButton.image.color = defaultButtonColor;
+
+            if (clickedButton != null)
+            {
+                clickedButton.image.color = selectedButtonColor;
+            }
         }
 
         public void SetColor(int color)
@@ -35,29 +55,30 @@ namespace Manager
             switch (colorType)
             {
                 case ColorType.Red:
-                    activeColor = Color.red;
+                    _activeColor = Color.red;
                     break;
                 case ColorType.Blue:
-                    activeColor = Color.blue;
+                    _activeColor = Color.cyan;
                     break;
                 case ColorType.Green:
-                    activeColor = Color.green;
+                    _activeColor = Color.green;
                     break;
                 case ColorType.Yellow:
-                    activeColor = Color.yellow;
+                    _activeColor = Color.yellow;
                     break;
                 case ColorType.Purple:
-                    activeColor = Color.magenta;
+                    _activeColor = Color.magenta;
                     break;
                 case ColorType.Pink:
-                    activeColor = Color.cyan;
+                    // FIX: Unity does not have a built-in Color.pink, so we have to mix one manually!
+                    _activeColor = new Color(1f, 0.4f, 0.7f); 
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    _activeColor = Color.white;
+                    break;
+
             }
-            OnColorSelected?.Invoke(activeColor);
-            //Debug.Log("Active Color: " + colorType);
+            OnColorSelected?.Invoke(_activeColor);
         }
     }
 }
-

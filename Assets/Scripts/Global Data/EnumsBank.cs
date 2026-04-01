@@ -11,4 +11,11 @@ namespace Global_Data
         Purple,
         Pink
     }
+    
+    public enum DifficultyType
+    {
+        Easy,
+        Medium,
+        Hard,
+    }
 }
