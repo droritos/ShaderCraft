@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9176054343954067428}
   - component: {fileID: 8718518062345264759}
   m_Layer: 5
-  m_Name: Options
+  m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86d67f5e0430ff04c9c4f53b84b656b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Manager.MenusGUIManager
-  optionPanel: {fileID: 3580430779663801586}
+  mainMenuPanel: {fileID: 3580430779663801586}
+  inGamePanel: {fileID: 0}
+  inputReader: {fileID: 0}
   easyModeButton: {fileID: 3796286951191989156}
   mediumModeButton: {fileID: 125179885964783413}
   hardModeButton: {fileID: 2215831180117019325}
@@ -291,7 +293,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Option Menu
+  m_text: Choose Difficulty
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

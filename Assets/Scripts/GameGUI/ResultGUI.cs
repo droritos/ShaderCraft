@@ -33,12 +33,17 @@ namespace GameGUI
             ChangeText(matchValue);
 
             int starsEarned = 1; // Default to 1 star for trying!
+            NextLevelButton.gameObject.SetActive(true);
             
             if (matchValue >= 90f) {
                 starsEarned = 3; 
             } 
             else if (matchValue >= 50f) {
                 starsEarned = 2;
+            }
+            else
+            {
+                NextLevelButton.gameObject.SetActive(false);
             }
 
             // 2. Loop through the list and swap the sprites
