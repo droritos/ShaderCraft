@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Old/Task 2.unity
-    guid: 684926b796b9feb49b6cd7583794b6a9
+    path: Assets/Scenes/Beauty Salon.unity
+    guid: cdaf3d5f2b23afa41869b85fc5d21b78
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
