@@ -9686,7 +9686,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &1142499986
 RectTransform:
@@ -22456,7 +22456,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2026102869
 Transform:
@@ -22622,6 +22622,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e7036c0012e44f84db2274de96418ee7, type: 3}
       propertyPath: m_Name
       value: Carpet_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e7036c0012e44f84db2274de96418ee7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23550,5 +23554,5 @@ SceneRoots:
   - {fileID: 702235039}
   - {fileID: 943029820139529667}
   - {fileID: 594855886}
-  - {fileID: 2088037014}
   - {fileID: 2026102869}
+  - {fileID: 2088037014}
